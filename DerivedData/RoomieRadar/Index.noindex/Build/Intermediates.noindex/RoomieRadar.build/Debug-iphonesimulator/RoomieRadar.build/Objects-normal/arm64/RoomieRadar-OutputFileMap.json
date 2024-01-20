@@ -1,0 +1,18 @@
+{
+  "" : {
+    "dependencies" : "/Users/maximillianstabe/Desktop/Coding/Portfolio Projects/RoomieRadar/DerivedData/RoomieRadar/Index.noindex/Build/Intermediates.noindex/RoomieRadar.build/Debug-iphonesimulator/RoomieRadar.build/Objects-normal/arm64/RoomieRadar-master.d",
+    "diagnostics" : "/Users/maximillianstabe/Desktop/Coding/Portfolio Projects/RoomieRadar/DerivedData/RoomieRadar/Index.noindex/Build/Intermediates.noindex/RoomieRadar.build/Debug-iphonesimulator/RoomieRadar.build/Objects-normal/arm64/RoomieRadar-master.dia",
+    "emit-module-dependencies" : "/Users/maximillianstabe/Desktop/Coding/Portfolio Projects/RoomieRadar/DerivedData/RoomieRadar/Index.noindex/Build/Intermediates.noindex/RoomieRadar.build/Debug-iphonesimulator/RoomieRadar.build/Objects-normal/arm64/RoomieRadar-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/maximillianstabe/Desktop/Coding/Portfolio Projects/RoomieRadar/DerivedData/RoomieRadar/Index.noindex/Build/Intermediates.noindex/RoomieRadar.build/Debug-iphonesimulator/RoomieRadar.build/Objects-normal/arm64/RoomieRadar-master-emit-module.dia",
+    "swift-dependencies" : "/Users/maximillianstabe/Desktop/Coding/Portfolio Projects/RoomieRadar/DerivedData/RoomieRadar/Index.noindex/Build/Intermediates.noindex/RoomieRadar.build/Debug-iphonesimulator/RoomieRadar.build/Objects-normal/arm64/RoomieRadar-master.swiftdeps"
+  },
+  "/Users/maximillianstabe/Desktop/Coding/Portfolio Projects/RoomieRadar/DerivedData/RoomieRadar/Index.noindex/Build/Intermediates.noindex/RoomieRadar.build/Debug-iphonesimulator/RoomieRadar.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+
+  },
+  "/Users/maximillianstabe/Desktop/Coding/Portfolio Projects/RoomieRadar/RoomieRadar/ContentView.swift" : {
+
+  },
+  "/Users/maximillianstabe/Desktop/Coding/Portfolio Projects/RoomieRadar/RoomieRadar/RoomieRadarApp.swift" : {
+
+  }
+}

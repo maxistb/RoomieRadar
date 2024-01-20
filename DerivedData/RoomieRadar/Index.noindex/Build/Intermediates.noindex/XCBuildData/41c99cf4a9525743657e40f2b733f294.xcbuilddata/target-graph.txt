@@ -1,0 +1,4 @@
+Target dependency graph (2 targets)
+Target 'Styleguide' in project 'Styleguide'
+➜ Explicit dependency on target 'Styleguide_Styleguide' in project 'Styleguide'
+Target 'Styleguide_Styleguide' in project 'Styleguide' (no dependencies)
