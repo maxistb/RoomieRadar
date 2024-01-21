@@ -1,12 +1,6 @@
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit)
 
 custom_rules:
-  comments_space: # From https://github.com/brandenr/swiftlintconfig
-    name: "Space After Comment"
-    regex: '(^ *//\w+)'
-    message: "There should be a space after //"
-    severity: warning
-
   empty_line_after_multiline_guard:
     name: "Empty Line After Guard"
     regex: '(^ *guard[ a-zA-Z0-9=?.\(\),><!]*\{[ a-zA-Z0-9=?.\(\),><!]*\}\n *(?!(?:return|guard))\S+)'
@@ -27,11 +21,6 @@ custom_rules:
 
 included:
   - ../../../App
-
-excluded:
-  - ../../../App/Generated
-  - ../../../Styleguide
-
 
 disabled_rules:
   - nesting
@@ -240,16 +229,6 @@ function_body_length:
   warning: 100
 
 identifier_name:
-  allowed_symbols: "_"
-  excluded:
-    - x
-    - y
-    - dx
-    - dy
-    - on
-    - to
-    - ok
-    - id
   min_length: 2
   max_length:
     warning: 60

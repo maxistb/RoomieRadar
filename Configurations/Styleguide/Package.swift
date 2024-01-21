@@ -4,18 +4,18 @@
 import PackageDescription
 
 let package = Package(
-  name: "Styleguide",
-  platforms: [.iOS(.v16)],
-  products: [
-    .library(
-      name: "Styleguide",
-      targets: ["Styleguide"]
-    )
-  ],
-  targets: [
-    .target(
-      name: "Styleguide",
-      resources: [.process("Resources")]
-    )
-  ]
+    name: "Styleguide",
+    platforms: [.iOS(.v16)],
+    products: [
+        .library(
+            name: "Styleguide",
+            targets: ["Styleguide"]
+        ),
+    ],
+    targets: [
+        .target(
+            name: "Styleguide",
+            resources: [.process("Resources")]
+        ),
+    ]
 )

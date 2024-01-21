@@ -1,4 +1,6 @@
-"test" = "test";
-"newValue" = "newValue";
-"test2" = "test2";
-"test3" = "test3";
+"login" = "Login";
+"login_screen_main_text" = "Logge dich mit deinen RoomieRadar Anmeldedaten ein.";
+"register" = "Registrieren";
+"email" = "E-Mail";
+"password" = "Passwort";
+"roomie_radar" = "RoomieRadar";

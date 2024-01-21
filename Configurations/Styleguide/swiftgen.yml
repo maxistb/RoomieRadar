@@ -13,6 +13,7 @@ strings:
 xcassets:
     inputs:
         - Assets/Color.xcassets
+        - Assets/Images.xcassets
     outputs:
         templateName: swift5
         output: ColorImageAsset.swift
