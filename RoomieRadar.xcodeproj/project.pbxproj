@@ -36,6 +36,7 @@
 		7AC1B8842B5C321000C8F568 /* RoomieRadarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC1B8832B5C321000C8F568 /* RoomieRadarApp.swift */; };
 		7AC1B88B2B5C321100C8F568 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AC1B88A2B5C321100C8F568 /* Preview Assets.xcassets */; };
 		7AC1B8A42B5C460800C8F568 /* BottomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC1B8A32B5C460800C8F568 /* BottomTabbar.swift */; };
+		7ADCBE742B5EAA1B00AF2C3A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A4AB6B62B5EA98D006C1425 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +51,7 @@
 
 /* Begin PBXFileReference section */
 		7A4AB6B42B5E9EC1006C1425 /* RoomieRadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomieRadar.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A4AB6B52B5E9EF2006C1425 /* GoogleService-Info (2).plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info (2).plist"; sourceTree = "<group>"; };
+		7A4AB6B62B5EA98D006C1425 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7AB565072B5D41D1009316A1 /* EmptyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScreen.swift; sourceTree = "<group>"; };
 		7AB5650A2B5D45B4009316A1 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		7AB565212B5D86CB009316A1 /* UIComponents */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = UIComponents; path = Configurations/UIComponents; sourceTree = "<group>"; };
@@ -132,7 +133,7 @@
 		7AC1B8912B5C426E00C8F568 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
-				7A4AB6B52B5E9EF2006C1425 /* GoogleService-Info (2).plist */,
+				7A4AB6B62B5EA98D006C1425 /* GoogleService-Info.plist */,
 				7AB565242B5D8E03009316A1 /* swiftlint.yml */,
 			);
 			path = Configurations;
@@ -219,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AC1B88B2B5C321100C8F568 /* Preview Assets.xcassets in Resources */,
+				7ADCBE742B5EAA1B00AF2C3A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
