@@ -22,7 +22,7 @@ struct RoomieRadarApp: App {
 
   var body: some Scene {
     WindowGroup {
-      LoginScreen()
+      LoginScreen(isLoginScreen: true)
     }
   }
 }

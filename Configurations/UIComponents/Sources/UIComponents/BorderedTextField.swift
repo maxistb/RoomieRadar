@@ -25,7 +25,7 @@ public struct BorderedTextField: View {
 
   public var body: some View {
     ZStack {
-      Asset.Color.secondary.swiftUIColor
+      colorScheme == .light ? Color.white : Asset.Color.darkSecondary.swiftUIColor
 
       HStack {
         ZStack(alignment: .trailing) {

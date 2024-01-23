@@ -20,8 +20,12 @@ public enum L10n {
   public static let password = L10n.tr("Localization", "password", fallback: "Passwort")
   /// Registrieren
   public static let register = L10n.tr("Localization", "register", fallback: "Registrieren")
+  /// Du hast noch keinen Account? Registriere dich jetzt und finde genau, wonach du suchst!
+  public static let registerScreenMainText = L10n.tr("Localization", "register_screen_main_text", fallback: "Du hast noch keinen Account? Registriere dich jetzt und finde genau, wonach du suchst!")
   /// RoomieRadar
   public static let roomieRadar = L10n.tr("Localization", "roomie_radar", fallback: "RoomieRadar")
+  /// Wonach suchst du?
+  public static let searchingQuestion = L10n.tr("Localization", "searching_question", fallback: "Wonach suchst du?")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

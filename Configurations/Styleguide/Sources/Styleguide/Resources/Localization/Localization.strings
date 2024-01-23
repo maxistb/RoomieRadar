@@ -4,3 +4,5 @@
 "email" = "E-Mail";
 "password" = "Passwort";
 "roomie_radar" = "RoomieRadar";
+"register_screen_main_text" = "Du hast noch keinen Account? Registriere dich jetzt und finde genau, wonach du suchst!";
+"searching_question" = "Wonach suchst du?";
