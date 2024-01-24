@@ -10,9 +10,8 @@ import UIComponents
 struct LoginScreen: View {
   @State private var email = ""
   @State private var password = ""
-  @State private var navigationPath = NavigationPath()
-  let isLoginScreen: Bool
-
+  @State private var isUserLoggedIn = false
+  @State private var viewState: ViewState = .login
   @State private var showAlert = false
 
   private var isDisabled: Bool {
@@ -20,25 +19,29 @@ struct LoginScreen: View {
   }
 
   var body: some View {
-    NavigationStack(path: $navigationPath) {
-      VStack {
-        header
-        if isLoginScreen {
-          mainImage
-          textFields
-        } else {
-          textFields
+    NavigationStack {
+      if isUserLoggedIn {
+        BottomTabbar()
+      } else {
+        VStack {
+          header
+          if viewState == .login {
+            mainImage
+            textFields
+          } else {
+            textFields
+          }
+          Spacer()
+          bottomButtons
         }
-        Spacer()
-        bottomButtons
+        .padding(.horizontal, 15)
+        .navigationBarBackButtonHidden()
       }
-      .padding(.horizontal, 15)
-      .navigationBarBackButtonHidden()
     }
   }
 
   private var header: some View {
-    Text(isLoginScreen ? L10n.loginScreenMainText : L10n.registerScreenMainText)
+    Text(viewState.header)
       .font(.title2)
       .bold()
       .foregroundStyle(.gray)
@@ -73,10 +76,10 @@ struct LoginScreen: View {
 
   private var bottomButtons: some View {
     VStack {
-      NavigationLink {
-        isLoginScreen ? AnyView(BottomTabbar()) : AnyView(LoginScreen(isLoginScreen: true))
+      Button {
+        isUserLoggedIn.toggle()
       } label: {
-        Text(isLoginScreen ? L10n.login : L10n.register)
+        Text(viewState.firstButtonTitle)
           .foregroundStyle(isDisabled ? Color.gray : Asset.Color.beatzColor.swiftUIColor)
       }
       .buttonStyle(PrimaryButtonStyle(isEnabled: true))
@@ -84,15 +87,53 @@ struct LoginScreen: View {
       .padding(.horizontal, 20)
       .disabled(isDisabled)
 
-      NavigationLink {
-        isLoginScreen ? LoginScreen(isLoginScreen: false) : LoginScreen(isLoginScreen: true)
+      Button {
+        if viewState == .login {
+          viewState = .register
+        } else {
+          viewState = .login
+        }
       } label: {
-        Text(isLoginScreen ? L10n.register : L10n.login)
+        Text(viewState.secondButtonTitle)
           .foregroundStyle(Asset.Color.beatzColor.swiftUIColor)
       }
       .buttonStyle(PrimaryButtonStyle(isEnabled: true))
       .padding(.bottom, 20)
       .padding(.horizontal, 20)
+    }
+  }
+}
+
+extension LoginScreen {
+  enum ViewState {
+    case login
+    case register
+
+    var header: String {
+      switch self {
+      case .login:
+        L10n.loginScreenMainText
+      case .register:
+        L10n.registerScreenMainText
+      }
+    }
+
+    var firstButtonTitle: String {
+      switch self {
+      case .login:
+        L10n.login
+      case .register:
+        L10n.register
+      }
+    }
+
+    var secondButtonTitle: String {
+      switch self {
+      case .login:
+        L10n.register
+      case .register:
+        L10n.login
+      }
     }
   }
 }
