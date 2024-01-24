@@ -7,25 +7,21 @@ import Styleguide
 import SwiftUI
 import UIComponents
 
-struct LoginScreen: View {
-  @State private var email = ""
-  @State private var password = ""
-  @State private var isUserLoggedIn = false
-  @State private var viewState: ViewState = .login
-  @State private var showAlert = false
+struct AuthenticationScreen: View {
+  @ObservedObject private var viewModel = AuthenticationViewModel()
 
   private var isDisabled: Bool {
-    email.isEmpty || password.isEmpty
+    viewModel.email.isEmpty || viewModel.password.isEmpty
   }
 
   var body: some View {
     NavigationStack {
-      if isUserLoggedIn {
+      if viewModel.isUserLoggedIn {
         BottomTabbar()
       } else {
         VStack {
           header
-          if viewState == .login {
+          if viewModel.viewState == .login {
             mainImage
             textFields
           } else {
@@ -36,12 +32,13 @@ struct LoginScreen: View {
         }
         .padding(.horizontal, 15)
         .navigationBarBackButtonHidden()
+        .alert(viewModel.errorMessage, isPresented: $viewModel.hasError) {}
       }
     }
   }
 
   private var header: some View {
-    Text(viewState.header)
+    Text(viewModel.viewState.header)
       .font(.title2)
       .bold()
       .foregroundStyle(.gray)
@@ -67,19 +64,25 @@ struct LoginScreen: View {
 
   private var textFields: some View {
     VStack {
-      BorderedTextField(textInput: $email, placeholder: L10n.email, isPasswordField: false)
+      BorderedTextField(textInput: $viewModel.email, placeholder: L10n.email, isPasswordField: false)
         .padding(.bottom, 20)
 
-      BorderedTextField(textInput: $password, placeholder: L10n.password, isPasswordField: true)
+      BorderedTextField(textInput: $viewModel.password, placeholder: L10n.password, isPasswordField: true)
     }
   }
 
   private var bottomButtons: some View {
     VStack {
       Button {
-        isUserLoggedIn.toggle()
+        Task {
+          if viewModel.viewState == .login {
+            await viewModel.loginUser()
+          } else {
+            await viewModel.registerUser()
+          }
+        }
       } label: {
-        Text(viewState.firstButtonTitle)
+        Text(viewModel.viewState.firstButtonTitle)
           .foregroundStyle(isDisabled ? Color.gray : Asset.Color.beatzColor.swiftUIColor)
       }
       .buttonStyle(PrimaryButtonStyle(isEnabled: true))
@@ -88,13 +91,15 @@ struct LoginScreen: View {
       .disabled(isDisabled)
 
       Button {
-        if viewState == .login {
-          viewState = .register
-        } else {
-          viewState = .login
+        withAnimation {
+          if viewModel.viewState == .login {
+            viewModel.viewState = .register
+          } else {
+            viewModel.viewState = .login
+          }
         }
       } label: {
-        Text(viewState.secondButtonTitle)
+        Text(viewModel.viewState.secondButtonTitle)
           .foregroundStyle(Asset.Color.beatzColor.swiftUIColor)
       }
       .buttonStyle(PrimaryButtonStyle(isEnabled: true))
@@ -104,36 +109,34 @@ struct LoginScreen: View {
   }
 }
 
-extension LoginScreen {
-  enum ViewState {
-    case login
-    case register
+enum ViewState {
+  case login
+  case register
 
-    var header: String {
-      switch self {
-      case .login:
-        L10n.loginScreenMainText
-      case .register:
-        L10n.registerScreenMainText
-      }
+  var header: String {
+    switch self {
+    case .login:
+      L10n.loginScreenMainText
+    case .register:
+      L10n.registerScreenMainText
     }
+  }
 
-    var firstButtonTitle: String {
-      switch self {
-      case .login:
-        L10n.login
-      case .register:
-        L10n.register
-      }
+  var firstButtonTitle: String {
+    switch self {
+    case .login:
+      L10n.login
+    case .register:
+      L10n.register
     }
+  }
 
-    var secondButtonTitle: String {
-      switch self {
-      case .login:
-        L10n.register
-      case .register:
-        L10n.login
-      }
+  var secondButtonTitle: String {
+    switch self {
+    case .login:
+      L10n.register
+    case .register:
+      L10n.login
     }
   }
 }

@@ -24,7 +24,7 @@
 		7A32DA2A2B5D935B00598053 /* UIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 7A32DA292B5D935B00598053 /* UIComponents */; };
 		7AB564EF2B5C5AD4009316A1 /* Styleguide in Frameworks */ = {isa = PBXBuildFile; productRef = 7AB564EE2B5C5AD4009316A1 /* Styleguide */; };
 		7AB565082B5D41D1009316A1 /* EmptyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB565072B5D41D1009316A1 /* EmptyScreen.swift */; };
-		7AB5650B2B5D45B4009316A1 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB5650A2B5D45B4009316A1 /* LoginScreen.swift */; };
+		7AB5650B2B5D45B4009316A1 /* AuthenticationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB5650A2B5D45B4009316A1 /* AuthenticationScreen.swift */; };
 		7AB565102B5D80EE009316A1 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7AB5650F2B5D80EE009316A1 /* FirebaseAnalytics */; };
 		7AB565122B5D80EE009316A1 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7AB565112B5D80EE009316A1 /* FirebaseAnalyticsSwift */; };
 		7AB565142B5D80EE009316A1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7AB565132B5D80EE009316A1 /* FirebaseAuth */; };
@@ -37,7 +37,7 @@
 		7AC1B88B2B5C321100C8F568 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AC1B88A2B5C321100C8F568 /* Preview Assets.xcassets */; };
 		7AC1B8A42B5C460800C8F568 /* BottomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC1B8A32B5C460800C8F568 /* BottomTabbar.swift */; };
 		7ADCBE742B5EAA1B00AF2C3A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A4AB6B62B5EA98D006C1425 /* GoogleService-Info.plist */; };
-		7ADCBE792B5EB43B00AF2C3A /* RegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADCBE782B5EB43B00AF2C3A /* RegisterScreen.swift */; };
+		7ADCBE7B2B618D6200AF2C3A /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADCBE7A2B618D6200AF2C3A /* AuthenticationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,14 +54,14 @@
 		7A4AB6B42B5E9EC1006C1425 /* RoomieRadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomieRadar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A4AB6B62B5EA98D006C1425 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7AB565072B5D41D1009316A1 /* EmptyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScreen.swift; sourceTree = "<group>"; };
-		7AB5650A2B5D45B4009316A1 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		7AB5650A2B5D45B4009316A1 /* AuthenticationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationScreen.swift; sourceTree = "<group>"; };
 		7AB565212B5D86CB009316A1 /* UIComponents */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = UIComponents; path = Configurations/UIComponents; sourceTree = "<group>"; };
 		7AB565242B5D8E03009316A1 /* swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
 		7AC1B8832B5C321000C8F568 /* RoomieRadarApp.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = RoomieRadarApp.swift; sourceTree = "<group>"; };
 		7AC1B88A2B5C321100C8F568 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7AC1B8A32B5C460800C8F568 /* BottomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabbar.swift; sourceTree = "<group>"; };
 		7AC1B8A92B5C482800C8F568 /* Styleguide */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Styleguide; path = Configurations/Styleguide; sourceTree = "<group>"; };
-		7ADCBE782B5EB43B00AF2C3A /* RegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterScreen.swift; sourceTree = "<group>"; };
+		7ADCBE7A2B618D6200AF2C3A /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,12 +92,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7AB565092B5D45A6009316A1 /* Login */ = {
+		7AB565092B5D45A6009316A1 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				7AB5650A2B5D45B4009316A1 /* LoginScreen.swift */,
+				7AB5650A2B5D45B4009316A1 /* AuthenticationScreen.swift */,
+				7ADCBE7A2B618D6200AF2C3A /* AuthenticationViewModel.swift */,
 			);
-			path = Login;
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		7AC1B8772B5C321000C8F568 = {
@@ -105,8 +106,7 @@
 			children = (
 				7AC1B8822B5C321000C8F568 /* App */,
 				7AC1B8912B5C426E00C8F568 /* Configurations */,
-				7AB565092B5D45A6009316A1 /* Login */,
-				7ADCBE772B5EB42C00AF2C3A /* Register */,
+				7AB565092B5D45A6009316A1 /* Authentication */,
 				7AB565212B5D86CB009316A1 /* UIComponents */,
 				7AC1B8A92B5C482800C8F568 /* Styleguide */,
 				7A32DA282B5D935B00598053 /* Frameworks */,
@@ -140,14 +140,6 @@
 				7AB565242B5D8E03009316A1 /* swiftlint.yml */,
 			);
 			path = Configurations;
-			sourceTree = "<group>";
-		};
-		7ADCBE772B5EB42C00AF2C3A /* Register */ = {
-			isa = PBXGroup;
-			children = (
-				7ADCBE782B5EB43B00AF2C3A /* RegisterScreen.swift */,
-			);
-			path = Register;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,9 +274,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ADCBE792B5EB43B00AF2C3A /* RegisterScreen.swift in Sources */,
 				7AC1B8A42B5C460800C8F568 /* BottomTabbar.swift in Sources */,
-				7AB5650B2B5D45B4009316A1 /* LoginScreen.swift in Sources */,
+				7ADCBE7B2B618D6200AF2C3A /* AuthenticationViewModel.swift in Sources */,
+				7AB5650B2B5D45B4009316A1 /* AuthenticationScreen.swift in Sources */,
 				7AB565082B5D41D1009316A1 /* EmptyScreen.swift in Sources */,
 				7AC1B8842B5C321000C8F568 /* RoomieRadarApp.swift in Sources */,
 			);
