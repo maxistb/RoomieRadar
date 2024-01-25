@@ -18,6 +18,14 @@ final class AuthenticationViewModel: ObservableObject {
 
   @Published var hasError = false
   @Published var errorMessage = ""
+  @Published var registerSelection: RegisterSelection = .none
+  private let authService: Auth
+
+  enum RegisterSelection {
+    case none
+    case wgOfferer
+    case wgSearcher
+  }
 
   init() {
     self.viewState = .login
@@ -25,36 +33,48 @@ final class AuthenticationViewModel: ObservableObject {
     self.password = ""
     self.showAlert = false
     self.isUserLoggedIn = false
+    self.authService = Auth.auth()
   }
 
   func registerUser() {
-    Auth.auth().createUser(withEmail: email, password: password) { _, error in
+    authService.createUser(withEmail: email, password: password) { [weak self] _, error in
       if let error = error {
-        self.hasError = true
-        self.errorMessage = error.localizedDescription
+        self?.hasError = true
+        self?.errorMessage = error.localizedDescription
 
       } else {
-        Auth.auth().currentUser?.sendEmailVerification()
+        self?.authService.currentUser?.sendEmailVerification()
       }
     }
   }
 
   func loginUser() {
-    Auth.auth().signIn(withEmail: email, password: password) { authDataResult, error in
+    authService.signIn(withEmail: email, password: password) { [weak self] authDataResult, error in
       if let error = error {
-        self.hasError = true
-        self.errorMessage = error.localizedDescription
+        self?.hasError = true
+        self?.errorMessage = error.localizedDescription
 
       } else {
         if let user = authDataResult?.user {
           if user.isEmailVerified {
-            self.isUserLoggedIn = true
+            self?.isUserLoggedIn = true
           } else {
-            self.hasError = true
-            self.errorMessage = "Bitte verifiziere deine E-Mail"
+            self?.hasError = true
+            self?.errorMessage = "Bitte verifiziere deine E-Mail"
           }
+        } else {
+          self?.hasError = true
+          self?.errorMessage = "Ein Fehler ist aufgetreten"
         }
       }
     }
+  }
+
+  func createWGOfferer() {
+
+  }
+
+  func createWGSearcher() {
+
   }
 }

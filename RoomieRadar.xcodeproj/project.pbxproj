@@ -38,6 +38,8 @@
 		7AC1B8A42B5C460800C8F568 /* BottomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC1B8A32B5C460800C8F568 /* BottomTabbar.swift */; };
 		7ADCBE742B5EAA1B00AF2C3A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A4AB6B62B5EA98D006C1425 /* GoogleService-Info.plist */; };
 		7ADCBE7B2B618D6200AF2C3A /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADCBE7A2B618D6200AF2C3A /* AuthenticationViewModel.swift */; };
+		7ADCBE7D2B623BA100AF2C3A /* WGOffererModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADCBE7C2B623BA100AF2C3A /* WGOffererModel.swift */; };
+		7ADCBE7F2B623BA800AF2C3A /* WGSearcherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADCBE7E2B623BA800AF2C3A /* WGSearcherModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		7AC1B8A32B5C460800C8F568 /* BottomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabbar.swift; sourceTree = "<group>"; };
 		7AC1B8A92B5C482800C8F568 /* Styleguide */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Styleguide; path = Configurations/Styleguide; sourceTree = "<group>"; };
 		7ADCBE7A2B618D6200AF2C3A /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		7ADCBE7C2B623BA100AF2C3A /* WGOffererModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WGOffererModel.swift; sourceTree = "<group>"; };
+		7ADCBE7E2B623BA800AF2C3A /* WGSearcherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WGSearcherModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 			children = (
 				7AB5650A2B5D45B4009316A1 /* AuthenticationScreen.swift */,
 				7ADCBE7A2B618D6200AF2C3A /* AuthenticationViewModel.swift */,
+				7ADCBE7C2B623BA100AF2C3A /* WGOffererModel.swift */,
+				7ADCBE7E2B623BA800AF2C3A /* WGSearcherModel.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -275,6 +281,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AC1B8A42B5C460800C8F568 /* BottomTabbar.swift in Sources */,
+				7ADCBE7F2B623BA800AF2C3A /* WGSearcherModel.swift in Sources */,
+				7ADCBE7D2B623BA100AF2C3A /* WGOffererModel.swift in Sources */,
 				7ADCBE7B2B618D6200AF2C3A /* AuthenticationViewModel.swift in Sources */,
 				7AB5650B2B5D45B4009316A1 /* AuthenticationScreen.swift in Sources */,
 				7AB565082B5D41D1009316A1 /* EmptyScreen.swift in Sources */,

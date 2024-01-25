@@ -11,7 +11,11 @@ struct AuthenticationScreen: View {
   @ObservedObject private var viewModel = AuthenticationViewModel()
 
   private var isDisabled: Bool {
-    viewModel.email.isEmpty || viewModel.password.isEmpty
+    if viewModel.viewState == .login {
+      viewModel.email.isEmpty || viewModel.password.isEmpty
+    } else {
+      viewModel.email.isEmpty || viewModel.password.isEmpty || viewModel.registerSelection == .none
+    }
   }
 
   var body: some View {
@@ -26,6 +30,7 @@ struct AuthenticationScreen: View {
             textFields
           } else {
             textFields
+            searchingSection
           }
           Spacer()
           bottomButtons
@@ -58,7 +63,22 @@ struct AuthenticationScreen: View {
     VStack {
       Text(L10n.searchingQuestion)
 
-      HStack {}
+      HStack {
+        RoundedRectangle(cornerRadius: 12)
+          .frame(width: 50, height: 50)
+          .padding(.trailing, 20)
+          .foregroundStyle(viewModel.registerSelection == .wgOfferer ? .green : .gray)
+          .onTapGesture {
+            viewModel.registerSelection = .wgOfferer
+          }
+
+        RoundedRectangle(cornerRadius: 12)
+          .frame(width: 50, height: 50)
+          .foregroundStyle(viewModel.registerSelection == .wgSearcher ? .green : .gray)
+          .onTapGesture {
+            viewModel.registerSelection = .wgSearcher
+          }
+      }
     }
   }
 
@@ -74,12 +94,10 @@ struct AuthenticationScreen: View {
   private var bottomButtons: some View {
     VStack {
       Button {
-        Task {
-          if viewModel.viewState == .login {
-            await viewModel.loginUser()
-          } else {
-            await viewModel.registerUser()
-          }
+        if viewModel.viewState == .login {
+          viewModel.loginUser()
+        } else {
+          viewModel.registerUser()
         }
       } label: {
         Text(viewModel.viewState.firstButtonTitle)
