@@ -5,6 +5,7 @@
 //
 
 import CoreData
+import FirebaseFirestore
 import Foundation
 
 @objc(WGSearcher)
@@ -35,6 +36,20 @@ public class WGSearcher: NSManagedObject {
 
     try? CoreDataStack.shared.mainContext.save()
     return newWGSearcher
+  }
+
+  public class func updateFirestoreWGOfferer(docRef: DocumentReference, wgSearcher: WGSearcher) {
+    let docData: [String: Any] = [
+      "age": wgSearcher.age,
+      "contactInfo": wgSearcher.contactInfo,
+      "gender": wgSearcher.gender,
+      "hobbies": wgSearcher.hobbies,
+      "imageString": wgSearcher.imageString,
+      "name": wgSearcher.name,
+      "ownDescription": wgSearcher.ownDescription
+    ]
+
+    docRef.setData(docData)
   }
 }
 

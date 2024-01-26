@@ -10,8 +10,8 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 public enum L10n {
-  /// Dein Account wurde erstellt! Bitte verifiziere diene E-Mail und logge dich ein.
-  public static let createAccountVerifyEmail = L10n.tr("Localization", "create_account_verify_email", fallback: "Dein Account wurde erstellt! Bitte verifiziere diene E-Mail und logge dich ein.")
+  /// Dein Account wurde erstellt! Bitte verifiziere deine E-Mail und logge dich ein.
+  public static let createAccountVerifyEmail = L10n.tr("Localization", "create_account_verify_email", fallback: "Dein Account wurde erstellt! Bitte verifiziere deine E-Mail und logge dich ein.")
   /// E-Mail
   public static let email = L10n.tr("Localization", "email", fallback: "E-Mail")
   /// Ein Fehler ist aufgetreten

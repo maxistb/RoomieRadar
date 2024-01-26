@@ -36,9 +36,9 @@
 		7AC1B8A42B5C460800C8F568 /* BottomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC1B8A32B5C460800C8F568 /* BottomTabbar.swift */; };
 		7ADCBE742B5EAA1B00AF2C3A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A4AB6B62B5EA98D006C1425 /* GoogleService-Info.plist */; };
 		7ADCBE7B2B618D6200AF2C3A /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADCBE7A2B618D6200AF2C3A /* AuthenticationViewModel.swift */; };
-		7ADCBE8A2B63966000AF2C3A /* Styleguide in Frameworks */ = {isa = PBXBuildFile; productRef = 7ADCBE892B63966000AF2C3A /* Styleguide */; };
-		7ADCBE8C2B63967B00AF2C3A /* UIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 7ADCBE8B2B63967B00AF2C3A /* UIComponents */; };
 		7ADCBE8E2B63968000AF2C3A /* RoomieRadarCoreData in Frameworks */ = {isa = PBXBuildFile; productRef = 7ADCBE8D2B63968000AF2C3A /* RoomieRadarCoreData */; };
+		7AEE63472B63D77C0024A43D /* Styleguide in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEE63462B63D77C0024A43D /* Styleguide */; };
+		7AEE63492B63D7800024A43D /* UIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEE63482B63D7800024A43D /* UIComponents */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7A4AB6B42B5E9EC1006C1425 /* RoomieRadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = RoomieRadar.app; path = "/Users/maximillianstabe/Desktop/Coding/Portfolio_Projects/RoomieRadar/build/Debug-iphoneos/RoomieRadar.app"; sourceTree = "<absolute>"; };
+		7A2B46032B63D63B007E0A31 /* RoomieRadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomieRadar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A4AB6B62B5EA98D006C1425 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7AB565072B5D41D1009316A1 /* EmptyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScreen.swift; sourceTree = "<group>"; };
 		7AB5650A2B5D45B4009316A1 /* AuthenticationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationScreen.swift; sourceTree = "<group>"; };
@@ -72,13 +72,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AB565182B5D80EE009316A1 /* FirebaseDatabaseSwift in Frameworks */,
-				7ADCBE8A2B63966000AF2C3A /* Styleguide in Frameworks */,
+				7AEE63472B63D77C0024A43D /* Styleguide in Frameworks */,
 				7AB565122B5D80EE009316A1 /* FirebaseAnalyticsSwift in Frameworks */,
 				7AB5651E2B5D80EE009316A1 /* FirebaseStorage in Frameworks */,
-				7ADCBE8C2B63967B00AF2C3A /* UIComponents in Frameworks */,
 				7AB565102B5D80EE009316A1 /* FirebaseAnalytics in Frameworks */,
 				7AB565162B5D80EE009316A1 /* FirebaseCrashlytics in Frameworks */,
 				7AB565142B5D80EE009316A1 /* FirebaseAuth in Frameworks */,
+				7AEE63492B63D7800024A43D /* UIComponents in Frameworks */,
 				7ADCBE8E2B63968000AF2C3A /* RoomieRadarCoreData in Frameworks */,
 				7AB5651A2B5D80EE009316A1 /* FirebaseFirestore in Frameworks */,
 				7AB5651C2B5D80EE009316A1 /* FirebaseFirestoreSwift in Frameworks */,
@@ -114,6 +114,7 @@
 				7ADCBE862B63962800AF2C3A /* RoomieRadarCoreData */,
 				7ADCBE872B63962800AF2C3A /* Styleguide */,
 				7ADCBE882B63962800AF2C3A /* UIComponents */,
+				7A2B46032B63D63B007E0A31 /* RoomieRadar.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -172,12 +173,12 @@
 				7AB565192B5D80EE009316A1 /* FirebaseFirestore */,
 				7AB5651B2B5D80EE009316A1 /* FirebaseFirestoreSwift */,
 				7AB5651D2B5D80EE009316A1 /* FirebaseStorage */,
-				7ADCBE892B63966000AF2C3A /* Styleguide */,
-				7ADCBE8B2B63967B00AF2C3A /* UIComponents */,
 				7ADCBE8D2B63968000AF2C3A /* RoomieRadarCoreData */,
+				7AEE63462B63D77C0024A43D /* Styleguide */,
+				7AEE63482B63D7800024A43D /* UIComponents */,
 			);
 			productName = RoomieRadar;
-			productReference = 7A4AB6B42B5E9EC1006C1425 /* RoomieRadar.app */;
+			productReference = 7A2B46032B63D63B007E0A31 /* RoomieRadar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -598,17 +599,17 @@
 			package = 7AB5650E2B5D80EE009316A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
 		};
-		7ADCBE892B63966000AF2C3A /* Styleguide */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Styleguide;
-		};
-		7ADCBE8B2B63967B00AF2C3A /* UIComponents */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = UIComponents;
-		};
 		7ADCBE8D2B63968000AF2C3A /* RoomieRadarCoreData */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RoomieRadarCoreData;
+		};
+		7AEE63462B63D77C0024A43D /* Styleguide */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Styleguide;
+		};
+		7AEE63482B63D7800024A43D /* UIComponents */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UIComponents;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

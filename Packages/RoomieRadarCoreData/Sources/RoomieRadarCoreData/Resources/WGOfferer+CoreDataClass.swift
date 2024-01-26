@@ -5,6 +5,7 @@
 //
 
 import CoreData
+import FirebaseFirestore
 import Foundation
 
 @objc(WGOfferer)
@@ -37,6 +38,21 @@ public class WGOfferer: NSManagedObject {
 
     try? CoreDataStack.shared.mainContext.save()
     return newWGOfferer
+  }
+
+  public class func updateFirestoreWGOfferer(docRef: DocumentReference, newWGOfferer: WGOfferer) {
+    let docData: [String: Any] = [
+      "address": newWGOfferer.address,
+      "contactInfo": newWGOfferer.contactInfo,
+      "idealRoommate": newWGOfferer.idealRoommate,
+      "imageString": newWGOfferer.imageString,
+      "name": newWGOfferer.name,
+      "wgDescription": newWGOfferer.wgDescription,
+      "wgPrice": newWGOfferer.wgPrice,
+      "wgSize": newWGOfferer.wgSize
+    ]
+
+    docRef.setData(docData)
   }
 }
 

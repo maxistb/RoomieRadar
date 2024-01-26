@@ -5,8 +5,6 @@
 
 import CoreData
 import Firebase
-import FirebaseAuth
-import Foundation
 import RoomieRadarCoreData
 import Styleguide
 
@@ -87,16 +85,7 @@ final class AuthenticationViewModel: ObservableObject {
     if let user = user {
       let newWGOfferer = WGOfferer.createWGOfferer(uid: user.uid)
       let docRef = db.collection("WGOfferer").document(user.uid)
-
-      docRef.setData(["address": newWGOfferer.address])
-      docRef.setData(["contactInfo": newWGOfferer.contactInfo])
-      docRef.setData(["idealRoommate": newWGOfferer.idealRoommate])
-      docRef.setData(["imageString": newWGOfferer.imageString])
-      docRef.setData(["name": newWGOfferer.name])
-      docRef.setData(["wgDescription": newWGOfferer.wgDescription])
-      docRef.setData(["wgPrice": newWGOfferer.wgPrice])
-      docRef.setData(["wgSize": newWGOfferer.wgSize])
-
+      WGOfferer.updateFirestoreWGOfferer(docRef: docRef, newWGOfferer: newWGOfferer)
     } else {
       hasError = true
       errorMessage = L10n.genericError
@@ -106,15 +95,8 @@ final class AuthenticationViewModel: ObservableObject {
   func createWGSearcher(user: User?) {
     if let user = user {
       let newWGSearcher = WGSearcher.createWGSearcher(uid: user.uid)
-      let docRef = db.collection("WGSearcher").document(user.uid)
-
-      docRef.setData(["age": newWGSearcher.age])
-      docRef.setData(["contactInfo": newWGSearcher.contactInfo])
-      docRef.setData(["gender": newWGSearcher.gender])
-      docRef.setData(["hobbies": newWGSearcher.hobbies])
-      docRef.setData(["imageString": newWGSearcher.imageString])
-      docRef.setData(["name": newWGSearcher.name])
-      docRef.setData(["ownDescription": newWGSearcher.ownDescription])
+      let docRef: DocumentReference = db.collection("WGSearcher").document(user.uid)
+      WGSearcher.updateFirestoreWGOfferer(docRef: docRef, wgSearcher: newWGSearcher)
     } else {
       hasError = true
       errorMessage = L10n.genericError
