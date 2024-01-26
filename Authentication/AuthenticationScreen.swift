@@ -32,6 +32,7 @@ struct AuthenticationScreen: View {
             textFields
           } else {
             textFields
+              .padding(.bottom, 20)
             searchingSection
           }
           Spacer()
@@ -63,25 +64,48 @@ struct AuthenticationScreen: View {
 
   private var searchingSection: some View {
     VStack {
-      Text(L10n.searchingQuestion)
+      HStack {
+        Text(L10n.searchingQuestion)
+          .font(.title3)
+          .bold()
+          .foregroundStyle(.gray)
+        Spacer()
+      }
 
       HStack {
-        RoundedRectangle(cornerRadius: 12)
-          .frame(width: 50, height: 50)
-          .padding(.trailing, 20)
-          .foregroundStyle(viewModel.registerSelection == .wgOfferer ? .green : .gray)
-          .onTapGesture {
-            viewModel.registerSelection = .wgOfferer
-          }
+        createImageView(
+          imageAsset: Asset.Images.examplePerson,
+          foregroundColor: viewModel.registerSelection == .wgOfferer ? .green : .gray
+        ) {
+          viewModel.registerSelection = .wgOfferer
+        }
+        .padding(.trailing, 20)
 
-        RoundedRectangle(cornerRadius: 12)
-          .frame(width: 50, height: 50)
-          .foregroundStyle(viewModel.registerSelection == .wgSearcher ? .green : .gray)
-          .onTapGesture {
-            viewModel.registerSelection = .wgSearcher
-          }
+        createImageView(
+          imageAsset: Asset.Images.exampleWG,
+          foregroundColor: viewModel.registerSelection == .wgSearcher ? .green : .gray
+        ) {
+          viewModel.registerSelection = .wgSearcher
+        }
       }
     }
+  }
+
+  private func createImageView(
+    imageAsset: ImageAsset,
+    foregroundColor: Color,
+    action: @escaping () -> Void
+  ) -> some View {
+    Image(asset: imageAsset)
+      .resizable()
+      .frame(width: 115, height: 115)
+      .clipShape(RoundedRectangle(cornerRadius: 10))
+      .onTapGesture { action() }
+      .background {
+        RoundedRectangle(cornerRadius: 12)
+          .frame(width: 120, height: 120)
+          .foregroundStyle(foregroundColor)
+      }
   }
 
   private var textFields: some View {

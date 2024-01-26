@@ -30,6 +30,8 @@ public enum Asset {
     public static let lightSecondary = ColorAsset(name: "lightSecondary")
   }
   public enum Images {
+    public static let examplePerson = ImageAsset(name: "ExamplePerson")
+    public static let exampleWG = ImageAsset(name: "ExampleWG")
     public static let house = ImageAsset(name: "House")
   }
 }

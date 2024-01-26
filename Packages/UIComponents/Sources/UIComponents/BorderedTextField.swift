@@ -77,7 +77,7 @@ public struct BorderedTextField: View {
 
   private var imageForTextFieldFocus: Image {
     if isPasswordField {
-      passwordVisible ? Image(systemName: "eye.slash.fill") : Image(systemName: "eye.fill")
+      Image(systemName: passwordVisible ? "eye.slash.fill" : "eye.fill")
     } else {
       Image(systemName: "xmark.circle")
     }

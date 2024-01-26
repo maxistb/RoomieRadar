@@ -22,7 +22,7 @@ final class AuthenticationViewModel: ObservableObject {
   @Published var errorMessage = ""
   @Published var registerSelection: RegisterSelection = .none
   private let authService: Auth
-  private let db = Firestore.firestore()
+  private let database = Firestore.firestore()
 
   enum RegisterSelection {
     case none
@@ -84,7 +84,7 @@ final class AuthenticationViewModel: ObservableObject {
   func createWGOfferer(user: User?) {
     if let user = user {
       let newWGOfferer = WGOfferer.createWGOfferer(uid: user.uid)
-      let docRef = db.collection("WGOfferer").document(user.uid)
+      let docRef = database.collection("WGOfferer").document(user.uid)
       WGOfferer.updateFirestoreWGOfferer(docRef: docRef, newWGOfferer: newWGOfferer)
     } else {
       hasError = true
@@ -95,7 +95,7 @@ final class AuthenticationViewModel: ObservableObject {
   func createWGSearcher(user: User?) {
     if let user = user {
       let newWGSearcher = WGSearcher.createWGSearcher(uid: user.uid)
-      let docRef: DocumentReference = db.collection("WGSearcher").document(user.uid)
+      let docRef: DocumentReference = database.collection("WGSearcher").document(user.uid)
       WGSearcher.updateFirestoreWGOfferer(docRef: docRef, wgSearcher: newWGSearcher)
     } else {
       hasError = true
