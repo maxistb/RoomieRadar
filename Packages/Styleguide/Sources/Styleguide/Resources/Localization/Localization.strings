@@ -6,3 +6,6 @@
 "roomie_radar" = "RoomieRadar";
 "register_screen_main_text" = "Du hast noch keinen Account? Registriere dich jetzt und finde genau, wonach du suchst!";
 "searching_question" = "Wonach suchst du?";
+"create_account_verify_email" = "Dein Account wurde erstellt! Bitte verifiziere deine E-Mail und logge dich ein.";
+"verify_email" = "Bitte verifiziere deine E-Mail";
+"generic_error" = "Ein Fehler ist aufgetreten";

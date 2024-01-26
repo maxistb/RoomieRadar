@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23C71" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="WGOfferer" representedClassName="WGOfferer" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="contactInfo" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="idealRoommate" optional="YES" attributeType="String"/>
+        <attribute name="imageString" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="wgDescription" optional="YES" attributeType="String"/>
+        <attribute name="wgPrice" optional="YES" attributeType="String"/>
+        <attribute name="wgSize" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="WGSearcher" representedClassName="WGSearcher" syncable="YES">
+        <attribute name="age" optional="YES" attributeType="String"/>
+        <attribute name="contactInfo" optional="YES" attributeType="String"/>
+        <attribute name="gender" optional="YES" attributeType="String"/>
+        <attribute name="hobbies" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="imageString" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="ownDescription" optional="YES" attributeType="String"/>
+    </entity>
+</model>

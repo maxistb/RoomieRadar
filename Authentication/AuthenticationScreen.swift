@@ -3,6 +3,8 @@
 // Copyright © 2024 Maximillian Joel Stabe. All rights reserved.
 //
 
+import CoreData
+import RoomieRadarCoreData
 import Styleguide
 import SwiftUI
 import UIComponents

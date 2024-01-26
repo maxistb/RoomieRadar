@@ -10,8 +10,12 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 public enum L10n {
+  /// Dein Account wurde erstellt! Bitte verifiziere diene E-Mail und logge dich ein.
+  public static let createAccountVerifyEmail = L10n.tr("Localization", "create_account_verify_email", fallback: "Dein Account wurde erstellt! Bitte verifiziere diene E-Mail und logge dich ein.")
   /// E-Mail
   public static let email = L10n.tr("Localization", "email", fallback: "E-Mail")
+  /// Ein Fehler ist aufgetreten
+  public static let genericError = L10n.tr("Localization", "generic_error", fallback: "Ein Fehler ist aufgetreten")
   /// Login
   public static let login = L10n.tr("Localization", "login", fallback: "Login")
   /// Logge dich mit deinen RoomieRadar Anmeldedaten ein.
@@ -26,6 +30,8 @@ public enum L10n {
   public static let roomieRadar = L10n.tr("Localization", "roomie_radar", fallback: "RoomieRadar")
   /// Wonach suchst du?
   public static let searchingQuestion = L10n.tr("Localization", "searching_question", fallback: "Wonach suchst du?")
+  /// Bitte verifiziere deine E-Mail
+  public static let verifyEmail = L10n.tr("Localization", "verify_email", fallback: "Bitte verifiziere deine E-Mail")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

@@ -3,8 +3,12 @@
 // Copyright © 2024 Maximillian Joel Stabe. All rights reserved.
 //
 
+import CoreData
+import Firebase
 import FirebaseAuth
 import Foundation
+import RoomieRadarCoreData
+import Styleguide
 
 @MainActor
 final class AuthenticationViewModel: ObservableObject {
@@ -20,6 +24,7 @@ final class AuthenticationViewModel: ObservableObject {
   @Published var errorMessage = ""
   @Published var registerSelection: RegisterSelection = .none
   private let authService: Auth
+  private let db = Firestore.firestore()
 
   enum RegisterSelection {
     case none
@@ -43,7 +48,15 @@ final class AuthenticationViewModel: ObservableObject {
         self?.errorMessage = error.localizedDescription
 
       } else {
-        self?.authService.currentUser?.sendEmailVerification()
+        let user: User? = self?.authService.currentUser
+        user?.sendEmailVerification()
+        if self?.registerSelection == .wgOfferer {
+          self?.createWGOfferer(user: user)
+        } else if self?.registerSelection == .wgSearcher {
+          self?.createWGSearcher(user: user)
+        }
+        self?.hasError = true
+        self?.errorMessage = L10n.createAccountVerifyEmail
       }
     }
   }
@@ -60,21 +73,51 @@ final class AuthenticationViewModel: ObservableObject {
             self?.isUserLoggedIn = true
           } else {
             self?.hasError = true
-            self?.errorMessage = "Bitte verifiziere deine E-Mail"
+            self?.errorMessage = L10n.verifyEmail
           }
         } else {
           self?.hasError = true
-          self?.errorMessage = "Ein Fehler ist aufgetreten"
+          self?.errorMessage = L10n.genericError
         }
       }
     }
   }
 
-  func createWGOfferer() {
+  func createWGOfferer(user: User?) {
+    if let user = user {
+      let newWGOfferer = WGOfferer.createWGOfferer(uid: user.uid)
+      let docRef = db.collection("WGOfferer").document(user.uid)
 
+      docRef.setData(["address": newWGOfferer.address])
+      docRef.setData(["contactInfo": newWGOfferer.contactInfo])
+      docRef.setData(["idealRoommate": newWGOfferer.idealRoommate])
+      docRef.setData(["imageString": newWGOfferer.imageString])
+      docRef.setData(["name": newWGOfferer.name])
+      docRef.setData(["wgDescription": newWGOfferer.wgDescription])
+      docRef.setData(["wgPrice": newWGOfferer.wgPrice])
+      docRef.setData(["wgSize": newWGOfferer.wgSize])
+
+    } else {
+      hasError = true
+      errorMessage = L10n.genericError
+    }
   }
 
-  func createWGSearcher() {
+  func createWGSearcher(user: User?) {
+    if let user = user {
+      let newWGSearcher = WGSearcher.createWGSearcher(uid: user.uid)
+      let docRef = db.collection("WGSearcher").document(user.uid)
 
+      docRef.setData(["age": newWGSearcher.age])
+      docRef.setData(["contactInfo": newWGSearcher.contactInfo])
+      docRef.setData(["gender": newWGSearcher.gender])
+      docRef.setData(["hobbies": newWGSearcher.hobbies])
+      docRef.setData(["imageString": newWGSearcher.imageString])
+      docRef.setData(["name": newWGSearcher.name])
+      docRef.setData(["ownDescription": newWGSearcher.ownDescription])
+    } else {
+      hasError = true
+      errorMessage = L10n.genericError
+    }
   }
 }
