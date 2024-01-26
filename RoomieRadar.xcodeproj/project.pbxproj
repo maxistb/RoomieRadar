@@ -39,6 +39,9 @@
 		7ADCBE8E2B63968000AF2C3A /* RoomieRadarCoreData in Frameworks */ = {isa = PBXBuildFile; productRef = 7ADCBE8D2B63968000AF2C3A /* RoomieRadarCoreData */; };
 		7AEE63472B63D77C0024A43D /* Styleguide in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEE63462B63D77C0024A43D /* Styleguide */; };
 		7AEE63492B63D7800024A43D /* UIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEE63482B63D7800024A43D /* UIComponents */; };
+		7AEE634E2B63EA240024A43D /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE634D2B63EA240024A43D /* ProfileScreen.swift */; };
+		7AEE63502B641B6B0024A43D /* ProfileScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE634F2B641B6B0024A43D /* ProfileScreenViewModel.swift */; };
+		7AEE63522B644D8C0024A43D /* WGSearcherProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE63512B644D8C0024A43D /* WGSearcherProfileScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +67,9 @@
 		7ADCBE862B63962800AF2C3A /* RoomieRadarCoreData */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RoomieRadarCoreData; path = Packages/RoomieRadarCoreData; sourceTree = "<group>"; };
 		7ADCBE872B63962800AF2C3A /* Styleguide */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Styleguide; path = Packages/Styleguide; sourceTree = "<group>"; };
 		7ADCBE882B63962800AF2C3A /* UIComponents */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = UIComponents; path = Packages/UIComponents; sourceTree = "<group>"; };
+		7AEE634D2B63EA240024A43D /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		7AEE634F2B641B6B0024A43D /* ProfileScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenViewModel.swift; sourceTree = "<group>"; };
+		7AEE63512B644D8C0024A43D /* WGSearcherProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WGSearcherProfileScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,7 @@
 		7AC1B8772B5C321000C8F568 = {
 			isa = PBXGroup;
 			children = (
+				7AEE634C2B63EA190024A43D /* Profile */,
 				7AC1B8822B5C321000C8F568 /* App */,
 				7AC1B8912B5C426E00C8F568 /* Configurations */,
 				7AB565092B5D45A6009316A1 /* Authentication */,
@@ -144,6 +151,16 @@
 				7AB565242B5D8E03009316A1 /* swiftlint.yml */,
 			);
 			path = Configurations;
+			sourceTree = "<group>";
+		};
+		7AEE634C2B63EA190024A43D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				7AEE634D2B63EA240024A43D /* ProfileScreen.swift */,
+				7AEE634F2B641B6B0024A43D /* ProfileScreenViewModel.swift */,
+				7AEE63512B644D8C0024A43D /* WGSearcherProfileScreen.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,7 +297,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AC1B8A42B5C460800C8F568 /* BottomTabbar.swift in Sources */,
+				7AEE634E2B63EA240024A43D /* ProfileScreen.swift in Sources */,
 				7ADCBE7B2B618D6200AF2C3A /* AuthenticationViewModel.swift in Sources */,
+				7AEE63502B641B6B0024A43D /* ProfileScreenViewModel.swift in Sources */,
+				7AEE63522B644D8C0024A43D /* WGSearcherProfileScreen.swift in Sources */,
 				7AB5650B2B5D45B4009316A1 /* AuthenticationScreen.swift in Sources */,
 				7AB565082B5D41D1009316A1 /* EmptyScreen.swift in Sources */,
 				7AC1B8842B5C321000C8F568 /* RoomieRadarApp.swift in Sources */,

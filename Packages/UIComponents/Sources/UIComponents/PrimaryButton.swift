@@ -8,12 +8,10 @@ import SwiftUI
 
 public struct PrimaryButton: View {
   let isLoginButton: Bool
-  let isEnabled: Bool
   let action: () -> Void
 
   public init(isLoginButton: Bool, action: @escaping () -> Void) {
     self.isLoginButton = isLoginButton
-    self.isEnabled = true
     self.action = action
   }
 
@@ -23,32 +21,24 @@ public struct PrimaryButton: View {
     } label: {
       ZStack {
         Text(isLoginButton ? L10n.login : L10n.register)
-          .foregroundStyle(isEnabled ? Asset.Color.beatzColor.swiftUIColor : Color.gray)
+          .foregroundStyle(Asset.Color.beatzColor.swiftUIColor)
           .frame(minHeight: 24)
       }
     }
     .buttonStyle(
-      PrimaryButtonStyle(isEnabled: isEnabled)
+      PrimaryButtonStyle()
     )
-    .disabled(!isEnabled)
   }
 }
 
 public struct PrimaryButtonStyle: ButtonStyle {
   @Environment(\.colorScheme) var colorScheme
-  let isEnabled: Bool
 
   private var borderColor: Color {
-    if isEnabled {
-      colorScheme == .light ? Color.gray : Asset.Color.darkSecondary.swiftUIColor
-    } else {
-      Color.gray
-    }
+    colorScheme == .light ? Color.gray : Asset.Color.darkSecondary.swiftUIColor
   }
 
-  public init(isEnabled: Bool) {
-    self.isEnabled = isEnabled
-  }
+  public init() {}
 
   public func makeBody(configuration: Self.Configuration) -> some View {
     configuration.label

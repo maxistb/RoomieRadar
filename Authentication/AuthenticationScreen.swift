@@ -22,8 +22,8 @@ struct AuthenticationScreen: View {
 
   var body: some View {
     NavigationStack {
-      if viewModel.isUserLoggedIn {
-        BottomTabbar()
+      if viewModel.isUserLoggedIn, let user = viewModel.authService.currentUser {
+        BottomTabbar(user: user)
       } else {
         VStack {
           header
@@ -60,6 +60,10 @@ struct AuthenticationScreen: View {
       .resizable()
       .frame(width: 200, height: 200)
       .padding(.bottom, 20)
+      .onTapGesture {
+        viewModel.email = "maxjoesta@gmail.com"
+        viewModel.password = "123456"
+      }
   }
 
   private var searchingSection: some View {
@@ -129,7 +133,7 @@ struct AuthenticationScreen: View {
         Text(viewModel.viewState.firstButtonTitle)
           .foregroundStyle(isDisabled ? Color.gray : Asset.Color.beatzColor.swiftUIColor)
       }
-      .buttonStyle(PrimaryButtonStyle(isEnabled: true))
+      .buttonStyle(PrimaryButtonStyle())
       .padding(.bottom, 10)
       .padding(.horizontal, 20)
       .disabled(isDisabled)
@@ -146,7 +150,7 @@ struct AuthenticationScreen: View {
         Text(viewModel.viewState.secondButtonTitle)
           .foregroundStyle(Asset.Color.beatzColor.swiftUIColor)
       }
-      .buttonStyle(PrimaryButtonStyle(isEnabled: true))
+      .buttonStyle(PrimaryButtonStyle())
       .padding(.bottom, 20)
       .padding(.horizontal, 20)
     }

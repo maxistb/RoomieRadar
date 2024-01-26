@@ -4,7 +4,8 @@
 //
 
 import CoreData
-import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 import RoomieRadarCoreData
 import Styleguide
 
@@ -21,7 +22,7 @@ final class AuthenticationViewModel: ObservableObject {
   @Published var hasError = false
   @Published var errorMessage = ""
   @Published var registerSelection: RegisterSelection = .none
-  private let authService: Auth
+  let authService: Auth
   private let database = Firestore.firestore()
 
   enum RegisterSelection {
