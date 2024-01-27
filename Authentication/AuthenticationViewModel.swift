@@ -81,10 +81,19 @@ final class AuthenticationViewModel: ObservableObject {
       } else {
         if let user = authDataResult?.user {
           if user.isEmailVerified {
-            WGOfferer.shared.updateLocalDataWithFirestore(database: self?.database ?? Firestore.firestore(), user: user)
-            //            WGSearcher.updateLocalDataWithFirestore(database: self?.database ?? Firestore.firestore(), user: user)
             Task {
               await self?.updateWGOffererState(user: user)
+              if self?.isWGOffererState == true {
+                WGOfferer.shared.updateLocalDataWithFirestore(
+                  database: self?.database ?? Firestore.firestore(),
+                  user: user
+                )
+              } else {
+                WGSearcher.shared.updateLocalDataWithFirestore(
+                  database: self?.database ?? Firestore.firestore(),
+                  user: user
+                )
+              }
               self?.isUserLoggedIn = true
             }
           } else {
@@ -111,9 +120,8 @@ final class AuthenticationViewModel: ObservableObject {
 
   func createWGSearcher(user: User?) {
     if let user = user {
-//      let newWGSearcher = WGSearcher.createWGSearcher(uid: user.uid)
       let docRef: DocumentReference = database.collection("WGSearcher").document(user.uid)
-//      WGSearcher.updateFirestoreWGOfferer(docRef: docRef, wgSearcher: newWGSearcher)
+      WGSearcher.shared.updateFirestoreWGOfferer(docRef: docRef)
     } else {
       hasError = true
       errorMessage = L10n.genericError

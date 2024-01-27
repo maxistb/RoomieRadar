@@ -22,7 +22,11 @@ class ProfileScreenViewModel: ObservableObject {
     URL(string: WGOfferer.shared.imageString)
   }
 
-  init() {}
+  let isWGOffererState: Bool
+
+  init(isWGOffererState: Bool) {
+    self.isWGOffererState = isWGOffererState
+  }
 
   func saveChanges() {
     let docRef = database.collection("WGOfferer").document(WGOfferer.shared.id)

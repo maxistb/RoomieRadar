@@ -21,13 +21,13 @@ struct ProfileScreen: View {
     NavigationView {
       List {
         profileImage
-//        if let wgSearcher = viewModel.wgSearcher {
-//          wgSearcherTextFields
-//          wgSearcherGeneralInfo
-//        } else if let wgOfferer = viewModel.wgOfferer {
+        if viewModel.isWGOffererState {
           wgOffererTextFields
           wgOffererGeneralInfo
-//        }
+        } else {
+          wgSearcherTextFields
+          wgSearcherGeneralInfo
+        }
         bottomButton
       }
       .navigationTitle("Profil")
