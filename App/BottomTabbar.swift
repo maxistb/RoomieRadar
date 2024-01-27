@@ -9,9 +9,11 @@ import SwiftUI
 
 struct BottomTabbar: View {
   let user: User
+  let isWGOffererState: Bool
 
-  init(user: User) {
+  init(user: User, isWGOffererState: Bool) {
     self.user = user
+    self.isWGOffererState = isWGOffererState
   }
 
   var body: some View {
@@ -31,6 +33,9 @@ struct BottomTabbar: View {
         .toolbarBackground(.visible, for: .tabBar)
 
       profileScreen
+    }
+    .onAppear {
+      print("STATE: \(isWGOffererState)")
     }
     .tint(Asset.Color.beatzColor.swiftUIColor)
     .navigationBarBackButtonHidden()

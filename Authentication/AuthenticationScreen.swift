@@ -22,7 +22,7 @@ struct AuthenticationScreen: View {
   var body: some View {
     NavigationStack {
       if viewModel.isUserLoggedIn, let user = viewModel.authService.currentUser {
-        BottomTabbar(user: user)
+        BottomTabbar(user: user, isWGOffererState: viewModel.isWGOffererState)
       } else {
         VStack {
           header

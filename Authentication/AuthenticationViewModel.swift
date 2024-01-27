@@ -21,6 +21,7 @@ final class AuthenticationViewModel: ObservableObject {
   @Published var hasError = false
   @Published var errorMessage = ""
   @Published var registerSelection: RegisterSelection = .none
+  @Published var isWGOffererState = false
   let authService: Auth
   private let database = Firestore.firestore()
 
@@ -37,6 +38,18 @@ final class AuthenticationViewModel: ObservableObject {
     self.showAlert = false
     self.isUserLoggedIn = false
     self.authService = Auth.auth()
+  }
+
+  func updateWGOffererState(user: User) async {
+    let docRef = database.collection("WGOfferer").document(user.uid)
+
+    do {
+      let document = try await docRef.getDocument()
+      isWGOffererState = document.exists
+    } catch {
+      print(error.localizedDescription)
+      isWGOffererState = false
+    }
   }
 
   func registerUser() {
@@ -69,8 +82,11 @@ final class AuthenticationViewModel: ObservableObject {
         if let user = authDataResult?.user {
           if user.isEmailVerified {
             WGOfferer.shared.updateLocalDataWithFirestore(database: self?.database ?? Firestore.firestore(), user: user)
-//            WGSearcher.updateLocalDataWithFirestore(database: self?.database ?? Firestore.firestore(), user: user)
-            self?.isUserLoggedIn = true
+            //            WGSearcher.updateLocalDataWithFirestore(database: self?.database ?? Firestore.firestore(), user: user)
+            Task {
+              await self?.updateWGOffererState(user: user)
+              self?.isUserLoggedIn = true
+            }
           } else {
             self?.hasError = true
             self?.errorMessage = L10n.verifyEmail
