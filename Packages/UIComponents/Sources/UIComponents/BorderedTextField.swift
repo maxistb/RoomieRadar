@@ -15,12 +15,12 @@ public struct BorderedTextField: View {
 
   @Binding var textInput: String
   let placeholder: String
-  let isPasswordField: Bool
+  @State var isPasswordField: Bool
 
   public init(textInput: Binding<String>, placeholder: String, isPasswordField: Bool) {
     self._textInput = textInput
     self.placeholder = placeholder
-    self.isPasswordField = isPasswordField
+    self._isPasswordField = State(initialValue: isPasswordField)
   }
 
   public var body: some View {
@@ -48,7 +48,7 @@ public struct BorderedTextField: View {
 
   private var textField: some View {
     Group {
-      if passwordVisible {
+      if passwordVisible || isPasswordField {
         SecureField(placeholder, text: $textInput)
           .id("TEXTFIELD")
           .focused($isTextFieldFocus)

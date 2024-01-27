@@ -42,7 +42,7 @@ struct BottomTabbar: View {
   }
 
   private var profileScreen: some View {
-    let viewModel = ProfileScreenViewModel(isWGOffererState: isWGOffererState)
+    let viewModel = ProfileScreenViewModel(isWGOffererState: isWGOffererState, user: user)
 
     return ProfileScreen(viewModel: viewModel)
       .tabItem {

@@ -3,6 +3,7 @@
 // Copyright © 2024 Maximillian Joel Stabe. All rights reserved.
 //
 
+import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
 import Foundation
@@ -10,8 +11,8 @@ import PhotosUI
 import SwiftUI
 
 class ProfileScreenViewModel: ObservableObject {
-  @Published var avatarItem: PhotosPickerItem?
-  @Published var avatarImage: Image?
+  @Published var avatarImage: UIImage?
+  @Published var showImagePicker = false
   @Published var showError = false
   @Published var errorMessage = ""
 
@@ -23,47 +24,49 @@ class ProfileScreenViewModel: ObservableObject {
   }
 
   let isWGOffererState: Bool
+  let user: User
 
-  init(isWGOffererState: Bool) {
+  init(isWGOffererState: Bool, user: User) {
     self.isWGOffererState = isWGOffererState
+    self.user = user
   }
 
   func saveChanges() {
-    let docRef = database.collection("WGOfferer").document(WGOfferer.shared.id)
-    WGOfferer.shared.updateFirestoreWGOfferer(docRef: docRef)
-  }
-
-  func getURL(item: PhotosPickerItem?, completionHandler: @escaping (_ result: Result<URL, Error>) -> Void) {
-    // Step 1: Load as Data object.
-    if let item = item {
-      item.loadTransferable(type: Data.self) { result in
-        switch result {
-        case .success(let data):
-          if let contentType = item.supportedContentTypes.first {
-            // Step 2: make the URL file name and a get a file extention.
-            let url = self.getDocumentsDirectory().appendingPathComponent("\(UUID().uuidString).\(contentType.preferredFilenameExtension ?? "")")
-            if let data = data {
-              do {
-                // Step 3: write to temp App file directory and return in completionHandler
-                try data.write(to: url)
-                completionHandler(.success(url))
-              } catch {
-                completionHandler(.failure(error))
-              }
-            }
-          }
-        case .failure(let failure):
-          completionHandler(.failure(failure))
-        }
-      }
+    if isWGOffererState {
+      let docRef = database.collection("WGOfferer").document(WGOfferer.shared.id)
+      WGOfferer.shared.updateFirestoreWGOfferer(docRef: docRef)
+    } else {
+      let docRef = database.collection("WGSearcher").document(WGSearcher.shared.id)
+      WGSearcher.shared.updateFirestoreWGOfferer(docRef: docRef)
     }
   }
 
-  func getDocumentsDirectory() -> URL {
-    // find all possible documents directories for this user
-    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+  func persistImageToStorage() {
+    guard let imageData = avatarImage?.jpegData(compressionQuality: 0.5) else { return }
+    let docRef = storageRef.child("\(user.uid)/profileImage.png")
 
-    // just send back the first one, which ought to be the only one
-    return paths[0]
+    docRef.putData(imageData, metadata: nil) { _, err in
+      if let err = err {
+        self.showError = true
+        self.errorMessage = "Failed to push image to Storage: \(err)"
+        return
+      }
+
+      docRef.downloadURL { url, err in
+        if let err = err {
+          self.showError = true
+          self.errorMessage = "Failed to retrieve downloadURL: \(err)"
+          return
+        }
+
+        if let url = url {
+          if self.isWGOffererState {
+            WGOfferer.shared.imageString = url.absoluteString
+          } else {
+            WGSearcher.shared.imageString = url.absoluteString
+          }
+        }
+      }
+    }
   }
 }

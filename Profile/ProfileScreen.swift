@@ -32,6 +32,10 @@ struct ProfileScreen: View {
       }
       .navigationTitle("Profil")
       .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {}
+      .fullScreenCover(isPresented: $viewModel.showImagePicker, onDismiss: nil) {
+        ImagePicker(image: $viewModel.avatarImage)
+          .ignoresSafeArea()
+      }
     }
   }
 
@@ -44,13 +48,11 @@ struct ProfileScreen: View {
             image
               .resizable()
               .clipShape(Circle())
-              .frame(width: 200, height: 200)
+              .frame(width: 150, height: 150)
               .overlay(alignment: .bottomTrailing) {
-                PhotosPicker(
-                  selection: $viewModel.avatarItem,
-                  matching: .images,
-                  photoLibrary: .shared()
-                ) {
+                Button {
+                  viewModel.showImagePicker = true
+                } label: {
                   Image(systemName: "pencil.circle.fill")
                     .font(.system(size: 30))
                 }
@@ -60,13 +62,12 @@ struct ProfileScreen: View {
           } else {
             Image(systemName: "person.crop.circle.fill")
               .resizable()
-              .frame(width: 200, height: 200)
+              .frame(width: 150, height: 150)
+              .clipShape(Circle())
               .overlay(alignment: .bottomTrailing) {
-                PhotosPicker(
-                  selection: $viewModel.avatarItem,
-                  matching: .images,
-                  photoLibrary: .shared()
-                ) {
+                Button {
+                  viewModel.showImagePicker = true
+                } label: {
                   Image(systemName: "pencil.circle.fill")
                     .font(.system(size: 30))
                 }
@@ -81,26 +82,20 @@ struct ProfileScreen: View {
     .padding(.bottom, -10)
     .listRowBackground(Color.clear)
     .listRowSeparator(.hidden)
-    .onChange(of: viewModel.avatarItem) { _ in
-      Task {
-        if let loaded = try? await viewModel.avatarItem?.loadTransferable(type: Image.self) {
-          viewModel.avatarImage = loaded
-          viewModel.getURL(item: viewModel.avatarItem) { result in
-            switch result {
-              case .success(let url):
-                WGSearcher.shared.imageString = url.absoluteString
-                WGOfferer.shared.imageString = url.absoluteString
-              case .failure(let failure):
-                viewModel.showError = true
-                viewModel.errorMessage = failure.localizedDescription
-            }
-          }
-        } else {
-          viewModel.showError = true
-          viewModel.errorMessage = L10n.genericError
-        }
-      }
+    .onChange(of: viewModel.avatarImage) { newValue in
+      print("CHANGED")
+      viewModel.persistImageToStorage()
     }
+//    .onChange(of: viewModel.avatarItem) { _ in
+//      Task {
+//        if let loaded = try? await viewModel.avatarItem?.loadTransferable(type: Image.self) {
+//          viewModel.avatarImage = loaded
+//        } else {
+//          viewModel.showError = true
+//          viewModel.errorMessage = L10n.genericError
+//        }
+//      }
+//    }
   }
 
   private var wgSearcherTextFields: some View {
@@ -276,4 +271,38 @@ struct ProfileScreen: View {
         .lineLimit(1 ... 5)
     }
   }
+}
+
+struct ImagePicker: UIViewControllerRepresentable {
+  @Binding var image: UIImage?
+
+  private let controller = UIImagePickerController()
+
+  func makeCoordinator() -> Coordinator {
+    return Coordinator(parent: self)
+  }
+
+  class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    let parent: ImagePicker
+
+    init(parent: ImagePicker) {
+      self.parent = parent
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+      parent.image = info[.originalImage] as? UIImage
+      picker.dismiss(animated: true)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+      picker.dismiss(animated: true)
+    }
+  }
+
+  func makeUIViewController(context: Context) -> some UIViewController {
+    controller.delegate = context.coordinator
+    return controller
+  }
+
+  func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
 }
