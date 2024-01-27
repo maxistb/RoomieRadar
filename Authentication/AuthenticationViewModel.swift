@@ -6,7 +6,6 @@
 import CoreData
 import FirebaseAuth
 import FirebaseFirestore
-import RoomieRadarCoreData
 import Styleguide
 
 @MainActor
@@ -69,8 +68,8 @@ final class AuthenticationViewModel: ObservableObject {
       } else {
         if let user = authDataResult?.user {
           if user.isEmailVerified {
-            WGOfferer.updateLocalDataWithFirestore(database: self?.database ?? Firestore.firestore(), user: user)
-            WGSearcher.updateLocalDataWithFirestore(database: self?.database ?? Firestore.firestore(), user: user)
+            WGOfferer.shared.updateLocalDataWithFirestore(database: self?.database ?? Firestore.firestore(), user: user)
+//            WGSearcher.updateLocalDataWithFirestore(database: self?.database ?? Firestore.firestore(), user: user)
             self?.isUserLoggedIn = true
           } else {
             self?.hasError = true
@@ -86,9 +85,8 @@ final class AuthenticationViewModel: ObservableObject {
 
   func createWGOfferer(user: User?) {
     if let user = user {
-      let newWGOfferer = WGOfferer.createWGOfferer(uid: user.uid)
       let docRef = database.collection("WGOfferer").document(user.uid)
-      WGOfferer.updateFirestoreWGOfferer(docRef: docRef, newWGOfferer: newWGOfferer)
+      WGOfferer.shared.updateFirestoreWGOfferer(docRef: docRef)
     } else {
       hasError = true
       errorMessage = L10n.genericError
@@ -97,9 +95,9 @@ final class AuthenticationViewModel: ObservableObject {
 
   func createWGSearcher(user: User?) {
     if let user = user {
-      let newWGSearcher = WGSearcher.createWGSearcher(uid: user.uid)
+//      let newWGSearcher = WGSearcher.createWGSearcher(uid: user.uid)
       let docRef: DocumentReference = database.collection("WGSearcher").document(user.uid)
-      WGSearcher.updateFirestoreWGOfferer(docRef: docRef, wgSearcher: newWGSearcher)
+//      WGSearcher.updateFirestoreWGOfferer(docRef: docRef, wgSearcher: newWGSearcher)
     } else {
       hasError = true
       errorMessage = L10n.genericError

@@ -4,29 +4,14 @@
 //
 
 import FirebaseAuth
-import RoomieRadarCoreData
 import Styleguide
 import SwiftUI
 
 struct BottomTabbar: View {
-  @FetchRequest var wgSearcher: FetchedResults<WGSearcher>
-  @FetchRequest var wgOfferer: FetchedResults<WGOfferer>
   let user: User
 
   init(user: User) {
     self.user = user
-
-    _wgSearcher = FetchRequest(
-      entity: WGSearcher.entity(),
-      sortDescriptors: [],
-      predicate: NSPredicate(format: "id == %@", user.uid)
-    )
-
-    _wgOfferer = FetchRequest(
-      entity: WGOfferer.entity(),
-      sortDescriptors: [],
-      predicate: NSPredicate(format: "id == %@", user.uid)
-    )
   }
 
   var body: some View {
@@ -52,28 +37,13 @@ struct BottomTabbar: View {
   }
 
   private var profileScreen: some View {
-    Group {
-      if let wgSearcher = wgSearcher.first {
-        let viewModel = ProfileScreenViewModel(wgOfferer: nil, wgSearcher: wgSearcher)
+    let viewModel = ProfileScreenViewModel()
 
-        ProfileScreen(viewModel: viewModel)
-          .tabItem {
-            Image(systemName: "person.crop.circle")
-            Text("Profil")
-          }
-          .toolbarBackground(.visible, for: .tabBar)
+    return ProfileScreen(viewModel: viewModel)
+      .tabItem {
+        Image(systemName: "person.crop.circle")
+        Text("Profil")
       }
-
-      if let wgOfferer = wgOfferer.first {
-        let viewModel = ProfileScreenViewModel(wgOfferer: wgOfferer, wgSearcher: nil)
-
-        ProfileScreen(viewModel: viewModel)
-          .tabItem {
-            Image(systemName: "person.crop.circle")
-            Text("Profil")
-          }
-          .toolbarBackground(.visible, for: .tabBar)
-      }
-    }
+      .toolbarBackground(.visible, for: .tabBar)
   }
 }

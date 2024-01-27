@@ -7,7 +7,6 @@ import FirebaseFirestore
 import FirebaseStorage
 import Foundation
 import PhotosUI
-import RoomieRadarCoreData
 import SwiftUI
 
 class ProfileScreenViewModel: ObservableObject {
@@ -16,35 +15,18 @@ class ProfileScreenViewModel: ObservableObject {
   @Published var showError = false
   @Published var errorMessage = ""
 
-  let wgOfferer: WGOfferer?
-  let wgSearcher: WGSearcher?
   private let storageRef = Storage.storage().reference()
   private let database = Firestore.firestore()
 
   var imageURL: URL? {
-    if let wgOfferer = wgOfferer {
-      return URL(string: wgOfferer.imageString)
-    } else if let wgSearcher = wgSearcher {
-      return URL(string: wgSearcher.imageString)
-    } else {
-      return nil
-    }
+    URL(string: WGOfferer.shared.imageString)
   }
 
-  init(wgOfferer: WGOfferer?, wgSearcher: WGSearcher?) {
-    self.wgOfferer = wgOfferer
-    self.wgSearcher = wgSearcher
-  }
+  init() {}
 
   func saveChanges() {
-    if let wgOfferer = wgOfferer {
-      let docRef = database.collection("WGOfferer").document(wgOfferer.id)
-      WGOfferer.updateFirestoreWGOfferer(docRef: docRef, newWGOfferer: wgOfferer)
-    } else if let wgSearcher = wgSearcher {
-      let docRef = database.collection("WGSearcher").document(wgSearcher.id)
-      WGSearcher.updateFirestoreWGOfferer(docRef: docRef, wgSearcher: wgSearcher)
-    }
-    try? CoreDataStack.shared.mainContext.save()
+    let docRef = database.collection("WGOfferer").document(WGOfferer.shared.id)
+    WGOfferer.shared.updateFirestoreWGOfferer(docRef: docRef)
   }
 
   func getURL(item: PhotosPickerItem?, completionHandler: @escaping (_ result: Result<URL, Error>) -> Void) {

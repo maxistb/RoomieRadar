@@ -5,7 +5,6 @@
 
 import CoreData
 import FirebaseCore
-import RoomieRadarCoreData
 import SwiftUI
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -26,7 +25,6 @@ struct RoomieRadarApp: App {
   var body: some Scene {
     WindowGroup {
       AuthenticationScreen()
-        .environment(\.managedObjectContext, CoreDataStack.shared.mainContext)
     }
   }
 }

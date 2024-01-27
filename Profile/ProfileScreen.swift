@@ -6,7 +6,6 @@
 import FirebaseFirestore
 import NukeUI
 import PhotosUI
-import RoomieRadarCoreData
 import Styleguide
 import SwiftUI
 import UIComponents
@@ -22,21 +21,17 @@ struct ProfileScreen: View {
     NavigationView {
       List {
         profileImage
-        if let wgSearcher = viewModel.wgSearcher {
-          wgSearcherTextFields
-          wgSearcherGeneralInfo
-        } else if let wgOfferer = viewModel.wgOfferer {
+//        if let wgSearcher = viewModel.wgSearcher {
+//          wgSearcherTextFields
+//          wgSearcherGeneralInfo
+//        } else if let wgOfferer = viewModel.wgOfferer {
           wgOffererTextFields
           wgOffererGeneralInfo
-        }
+//        }
         bottomButton
       }
       .navigationTitle("Profil")
       .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {}
-      .onAppear {
-        print("OFFERER: \(viewModel.wgOfferer)")
-        print("SEARCHER: \(viewModel.wgSearcher)")
-      }
     }
   }
 
@@ -93,15 +88,13 @@ struct ProfileScreen: View {
           viewModel.getURL(item: viewModel.avatarItem) { result in
             switch result {
               case .success(let url):
-                viewModel.wgSearcher?.imageString = url.absoluteString
-                viewModel.wgOfferer?.imageString = url.absoluteString
+                WGSearcher.shared.imageString = url.absoluteString
+                WGOfferer.shared.imageString = url.absoluteString
               case .failure(let failure):
                 viewModel.showError = true
                 viewModel.errorMessage = failure.localizedDescription
             }
           }
-
-          try? CoreDataStack.shared.mainContext.save()
         } else {
           viewModel.showError = true
           viewModel.errorMessage = L10n.genericError
@@ -112,80 +105,74 @@ struct ProfileScreen: View {
 
   private var wgSearcherTextFields: some View {
     Group {
-      if let wgSearcher = viewModel.wgSearcher {
-        createGenericTextFieldSection(
-          sectionHeader: "Name",
-          placeholder: "Wie heißt du?",
-          binding: Binding(
-            get: { wgSearcher.name },
-            set: { newValue in wgSearcher.name = newValue }
-          )
+      createGenericTextFieldSection(
+        sectionHeader: "Name",
+        placeholder: "Wie heißt du?",
+        binding: Binding(
+          get: { WGSearcher.shared.name },
+          set: { newValue in WGSearcher.shared.name = newValue }
         )
-        createGenericTextFieldSection(
-          sectionHeader: "Beschreibung",
-          placeholder: "Wie beschreibst du dich?",
-          binding: Binding(
-            get: { wgSearcher.ownDescription },
-            set: { newValue in wgSearcher.ownDescription = newValue }
-          )
+      )
+      createGenericTextFieldSection(
+        sectionHeader: "Beschreibung",
+        placeholder: "Wie beschreibst du dich?",
+        binding: Binding(
+          get: { WGSearcher.shared.ownDescription },
+          set: { newValue in WGSearcher.shared.ownDescription = newValue }
         )
+      )
 
-        createGenericTextFieldSection(
-          sectionHeader: "Hobbys",
-          placeholder: "Was sind deine Hobbys?",
-          binding: Binding(
-            get: { wgSearcher.hobbies },
-            set: { newValue in wgSearcher.hobbies = newValue }
-          )
+      createGenericTextFieldSection(
+        sectionHeader: "Hobbys",
+        placeholder: "Was sind deine Hobbys?",
+        binding: Binding(
+          get: { WGSearcher.shared.hobbies },
+          set: { newValue in WGSearcher.shared.hobbies = newValue }
         )
+      )
 
-        createGenericTextFieldSection(
-          sectionHeader: "Kontaktinfo",
-          placeholder: "Wie kann man dich kontaktieren?",
-          binding: Binding(
-            get: { wgSearcher.contactInfo },
-            set: { newValue in wgSearcher.contactInfo = newValue }
-          )
+      createGenericTextFieldSection(
+        sectionHeader: "Kontaktinfo",
+        placeholder: "Wie kann man dich kontaktieren?",
+        binding: Binding(
+          get: { WGSearcher.shared.contactInfo },
+          set: { newValue in WGSearcher.shared.contactInfo = newValue }
         )
-      }
+      )
     }
   }
 
   private var wgSearcherGeneralInfo: some View {
     Group {
-      if let wgSearcher = viewModel.wgSearcher {
-        generalInfo(
-          placeholder1: "Alter",
-          placeHolder2: "Geschlecht",
-          binding1: Binding(
-            get: { wgSearcher.age },
-            set: { newValue in wgSearcher.age = newValue }
-          ),
-          binding2: Binding(
-            get: { wgSearcher.gender },
-            set: { newValue in wgSearcher.gender = newValue }
-          )
+      generalInfo(
+        placeholder1: "Alter",
+        placeHolder2: "Geschlecht",
+        binding1: Binding(
+          get: { WGSearcher.shared.age },
+          set: { newValue in WGSearcher.shared.age = newValue }
+        ),
+        binding2: Binding(
+          get: { WGSearcher.shared.gender },
+          set: { newValue in WGSearcher.shared.gender = newValue }
         )
-      }
+      )
     }
   }
 
   private var wgOffererGeneralInfo: some View {
     Group {
-      if let wgOfferer = viewModel.wgOfferer {
-        generalInfo(
-          placeholder1: "Preis",
-          placeHolder2: "Größe",
-          binding1: Binding(
-            get: { wgOfferer.wgPrice },
-            set: { newValue in wgOfferer.wgPrice = newValue }
-          ),
-          binding2: Binding(
-            get: { wgOfferer.wgSize },
-            set: { newValue in wgOfferer.wgSize = newValue }
-          )
+      generalInfo(
+        placeholder1: "Preis",
+        placeHolder2: "Größe",
+        binding1: Binding(
+          get: { WGOfferer.shared.wgPrice },
+          set: { newValue in WGOfferer.shared.wgPrice = newValue }
+        ),
+        binding2: Binding(
+          get: { WGOfferer.shared.wgSize },
+          set: { newValue in WGOfferer.shared.wgSize = newValue }
         )
-      }
+      )
     }
   }
 
@@ -232,52 +219,50 @@ struct ProfileScreen: View {
 
   private var wgOffererTextFields: some View {
     Group {
-      if let wgOfferer = viewModel.wgOfferer {
-        createGenericTextFieldSection(
-          sectionHeader: "Name",
-          placeholder: "Wie heißt ihr?",
-          binding: Binding(
-            get: { wgOfferer.name },
-            set: { newValue in wgOfferer.name = newValue }
-          )
+      createGenericTextFieldSection(
+        sectionHeader: "Name",
+        placeholder: "Wie heißt ihr?",
+        binding: Binding(
+          get: { WGOfferer.shared.name },
+          set: { newValue in WGOfferer.shared.name = newValue }
         )
+      )
 
-        createGenericTextFieldSection(
-          sectionHeader: "Beschreibung",
-          placeholder: "Wie beschreibt ihr eure WG?",
-          binding: Binding(
-            get: { wgOfferer.wgDescription },
-            set: { newValue in wgOfferer.wgDescription = newValue }
-          )
+      createGenericTextFieldSection(
+        sectionHeader: "Beschreibung",
+        placeholder: "Wie beschreibt ihr eure WG?",
+        binding: Binding(
+          get: { WGOfferer.shared.wgDescription },
+          set: { newValue in WGOfferer.shared.wgDescription = newValue }
         )
+      )
 
-        createGenericTextFieldSection(
-          sectionHeader: "Adresse",
-          placeholder: "Ich wohne in der ...",
-          binding: Binding(
-            get: { wgOfferer.address },
-            set: { newValue in wgOfferer.address = newValue }
-          )
+      createGenericTextFieldSection(
+        sectionHeader: "Adresse",
+        placeholder: "Ich wohne in der ...",
+        binding: Binding(
+          get: { WGOfferer.shared.address },
+          set: { newValue in WGOfferer.shared.address = newValue }
         )
+      )
 
-        createGenericTextFieldSection(
-          sectionHeader: "Mitbewohner",
-          placeholder: "Unser neuer Mitbewohner sollte ...",
-          binding: Binding(
-            get: { wgOfferer.idealRoommate },
-            set: { newValue in wgOfferer.idealRoommate = newValue }
-          )
+      createGenericTextFieldSection(
+        sectionHeader: "Mitbewohner",
+        placeholder: "Unser neuer Mitbewohner sollte ...",
+        binding: Binding(
+          get: { WGOfferer.shared.idealRoommate },
+          set: { newValue in WGOfferer.shared.idealRoommate = newValue }
         )
+      )
 
-        createGenericTextFieldSection(
-          sectionHeader: "Kontaktinfo",
-          placeholder: "Man kann uns erreichen unter ...",
-          binding: Binding(
-            get: { wgOfferer.contactInfo },
-            set: { newValue in wgOfferer.contactInfo = newValue }
-          )
+      createGenericTextFieldSection(
+        sectionHeader: "Kontaktinfo",
+        placeholder: "Man kann uns erreichen unter ...",
+        binding: Binding(
+          get: { WGOfferer.shared.contactInfo },
+          set: { newValue in WGOfferer.shared.contactInfo = newValue }
         )
-      }
+      )
     }
   }
 

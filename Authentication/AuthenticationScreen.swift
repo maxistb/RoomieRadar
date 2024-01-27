@@ -4,7 +4,6 @@
 //
 
 import CoreData
-import RoomieRadarCoreData
 import Styleguide
 import SwiftUI
 import UIComponents
