@@ -39,9 +39,11 @@
 		7ADCBE8E2B63968000AF2C3A /* RoomieRadarCoreData in Frameworks */ = {isa = PBXBuildFile; productRef = 7ADCBE8D2B63968000AF2C3A /* RoomieRadarCoreData */; };
 		7AEE63472B63D77C0024A43D /* Styleguide in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEE63462B63D77C0024A43D /* Styleguide */; };
 		7AEE63492B63D7800024A43D /* UIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEE63482B63D7800024A43D /* UIComponents */; };
-		7AEE634E2B63EA240024A43D /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE634D2B63EA240024A43D /* ProfileScreen.swift */; };
-		7AEE63502B641B6B0024A43D /* ProfileScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE634F2B641B6B0024A43D /* ProfileScreenViewModel.swift */; };
-		7AEE63522B644D8C0024A43D /* WGSearcherProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE63512B644D8C0024A43D /* WGSearcherProfileScreen.swift */; };
+		7AEE63522B644D8C0024A43D /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE63512B644D8C0024A43D /* ProfileScreen.swift */; };
+		7AEE63562B64EB420024A43D /* ProfileScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE63552B64EB420024A43D /* ProfileScreenViewModel.swift */; };
+		7AEE63592B6532490024A43D /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEE63582B6532490024A43D /* Nuke */; };
+		7AEE635B2B6532490024A43D /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEE635A2B6532490024A43D /* NukeExtensions */; };
+		7AEE635D2B6532490024A43D /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEE635C2B6532490024A43D /* NukeUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,9 +69,8 @@
 		7ADCBE862B63962800AF2C3A /* RoomieRadarCoreData */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RoomieRadarCoreData; path = Packages/RoomieRadarCoreData; sourceTree = "<group>"; };
 		7ADCBE872B63962800AF2C3A /* Styleguide */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Styleguide; path = Packages/Styleguide; sourceTree = "<group>"; };
 		7ADCBE882B63962800AF2C3A /* UIComponents */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = UIComponents; path = Packages/UIComponents; sourceTree = "<group>"; };
-		7AEE634D2B63EA240024A43D /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
-		7AEE634F2B641B6B0024A43D /* ProfileScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenViewModel.swift; sourceTree = "<group>"; };
-		7AEE63512B644D8C0024A43D /* WGSearcherProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WGSearcherProfileScreen.swift; sourceTree = "<group>"; };
+		7AEE63512B644D8C0024A43D /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		7AEE63552B64EB420024A43D /* ProfileScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,10 +79,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AB565182B5D80EE009316A1 /* FirebaseDatabaseSwift in Frameworks */,
+				7AEE635D2B6532490024A43D /* NukeUI in Frameworks */,
 				7AEE63472B63D77C0024A43D /* Styleguide in Frameworks */,
 				7AB565122B5D80EE009316A1 /* FirebaseAnalyticsSwift in Frameworks */,
+				7AEE63592B6532490024A43D /* Nuke in Frameworks */,
 				7AB5651E2B5D80EE009316A1 /* FirebaseStorage in Frameworks */,
 				7AB565102B5D80EE009316A1 /* FirebaseAnalytics in Frameworks */,
+				7AEE635B2B6532490024A43D /* NukeExtensions in Frameworks */,
 				7AB565162B5D80EE009316A1 /* FirebaseCrashlytics in Frameworks */,
 				7AB565142B5D80EE009316A1 /* FirebaseAuth in Frameworks */,
 				7AEE63492B63D7800024A43D /* UIComponents in Frameworks */,
@@ -156,9 +160,8 @@
 		7AEE634C2B63EA190024A43D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				7AEE634D2B63EA240024A43D /* ProfileScreen.swift */,
-				7AEE634F2B641B6B0024A43D /* ProfileScreenViewModel.swift */,
-				7AEE63512B644D8C0024A43D /* WGSearcherProfileScreen.swift */,
+				7AEE63512B644D8C0024A43D /* ProfileScreen.swift */,
+				7AEE63552B64EB420024A43D /* ProfileScreenViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -193,6 +196,9 @@
 				7ADCBE8D2B63968000AF2C3A /* RoomieRadarCoreData */,
 				7AEE63462B63D77C0024A43D /* Styleguide */,
 				7AEE63482B63D7800024A43D /* UIComponents */,
+				7AEE63582B6532490024A43D /* Nuke */,
+				7AEE635A2B6532490024A43D /* NukeExtensions */,
+				7AEE635C2B6532490024A43D /* NukeUI */,
 			);
 			productName = RoomieRadar;
 			productReference = 7A2B46032B63D63B007E0A31 /* RoomieRadar.app */;
@@ -228,6 +234,7 @@
 			mainGroup = 7AC1B8772B5C321000C8F568;
 			packageReferences = (
 				7AB5650E2B5D80EE009316A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				7AEE63572B6532490024A43D /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = 7AC1B8772B5C321000C8F568;
 			projectDirPath = "";
@@ -297,10 +304,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AC1B8A42B5C460800C8F568 /* BottomTabbar.swift in Sources */,
-				7AEE634E2B63EA240024A43D /* ProfileScreen.swift in Sources */,
 				7ADCBE7B2B618D6200AF2C3A /* AuthenticationViewModel.swift in Sources */,
-				7AEE63502B641B6B0024A43D /* ProfileScreenViewModel.swift in Sources */,
-				7AEE63522B644D8C0024A43D /* WGSearcherProfileScreen.swift in Sources */,
+				7AEE63522B644D8C0024A43D /* ProfileScreen.swift in Sources */,
+				7AEE63562B64EB420024A43D /* ProfileScreenViewModel.swift in Sources */,
 				7AB5650B2B5D45B4009316A1 /* AuthenticationScreen.swift in Sources */,
 				7AB565082B5D41D1009316A1 /* EmptyScreen.swift in Sources */,
 				7AC1B8842B5C321000C8F568 /* RoomieRadarApp.swift in Sources */,
@@ -576,6 +582,14 @@
 				minimumVersion = 10.20.0;
 			};
 		};
+		7AEE63572B6532490024A43D /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -630,6 +644,21 @@
 		7AEE63482B63D7800024A43D /* UIComponents */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UIComponents;
+		};
+		7AEE63582B6532490024A43D /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7AEE63572B6532490024A43D /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		7AEE635A2B6532490024A43D /* NukeExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7AEE63572B6532490024A43D /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeExtensions;
+		};
+		7AEE635C2B6532490024A43D /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7AEE63572B6532490024A43D /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

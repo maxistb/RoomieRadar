@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
   name: "RoomieRadarCoreData",
+  platforms: [.iOS(.v16)],
   products: [
     .library(
       name: "RoomieRadarCoreData",

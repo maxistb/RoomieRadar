@@ -53,6 +53,10 @@ struct AuthenticationScreen: View {
       .multilineTextAlignment(.center)
       .padding(.top, 50)
       .padding(.bottom, 30)
+      .onTapGesture {
+        viewModel.email = "maximillian.stabe@studium.uni-hamburg.de"
+        viewModel.password = "123456"
+      }
   }
 
   private var mainImage: some View {

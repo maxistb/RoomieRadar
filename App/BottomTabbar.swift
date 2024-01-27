@@ -45,8 +45,18 @@ struct BottomTabbar: View {
         }
         .toolbarBackground(.visible, for: .tabBar)
 
+      profileScreen
+    }
+    .tint(Asset.Color.beatzColor.swiftUIColor)
+    .navigationBarBackButtonHidden()
+  }
+
+  private var profileScreen: some View {
+    Group {
       if let wgSearcher = wgSearcher.first {
-        WGSearcherProfileScreen(wgSearcher: wgSearcher)
+        let viewModel = ProfileScreenViewModel(wgOfferer: nil, wgSearcher: wgSearcher)
+
+        ProfileScreen(viewModel: viewModel)
           .tabItem {
             Image(systemName: "person.crop.circle")
             Text("Profil")
@@ -55,7 +65,9 @@ struct BottomTabbar: View {
       }
 
       if let wgOfferer = wgOfferer.first {
-        EmptyScreen()
+        let viewModel = ProfileScreenViewModel(wgOfferer: wgOfferer, wgSearcher: nil)
+
+        ProfileScreen(viewModel: viewModel)
           .tabItem {
             Image(systemName: "person.crop.circle")
             Text("Profil")
@@ -63,7 +75,5 @@ struct BottomTabbar: View {
           .toolbarBackground(.visible, for: .tabBar)
       }
     }
-    .tint(Asset.Color.beatzColor.swiftUIColor)
-    .navigationBarBackButtonHidden()
   }
 }

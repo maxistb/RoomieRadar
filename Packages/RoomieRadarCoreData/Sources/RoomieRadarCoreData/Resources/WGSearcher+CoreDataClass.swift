@@ -5,6 +5,7 @@
 //
 
 import CoreData
+import FirebaseAuth
 import FirebaseFirestore
 import Foundation
 
@@ -50,6 +51,18 @@ public class WGSearcher: NSManagedObject {
     ]
 
     docRef.setData(docData)
+  }
+
+  public class func updateLocalDataWithFirestore(database: Firestore, user: User) {
+    let docRef = database.collection("WGSearcher").document(user.uid)
+    docRef.getDocument(completion: { document, error in
+      guard error == nil else { return }
+
+      if let document = document, document.exists {
+        let data = document.data()
+        print(data)
+      }
+    })
   }
 }
 

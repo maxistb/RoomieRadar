@@ -69,6 +69,8 @@ final class AuthenticationViewModel: ObservableObject {
       } else {
         if let user = authDataResult?.user {
           if user.isEmailVerified {
+            WGOfferer.updateLocalDataWithFirestore(database: self?.database ?? Firestore.firestore(), user: user)
+            WGSearcher.updateLocalDataWithFirestore(database: self?.database ?? Firestore.firestore(), user: user)
             self?.isUserLoggedIn = true
           } else {
             self?.hasError = true

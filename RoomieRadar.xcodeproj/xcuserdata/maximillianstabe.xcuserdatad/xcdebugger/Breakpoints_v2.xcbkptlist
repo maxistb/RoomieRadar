@@ -7,17 +7,111 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "73554D8B-06EF-4ACA-B546-041CD2FDF4B3"
+            uuid = "3D41E011-FBAF-4C75-B460-2AA32DBCB58C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Profile/ProfileScreenViewModel.swift"
+            filePath = "App/BottomTabbar.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "profileScreen"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "3D41E011-FBAF-4C75-B460-2AA32DBCB58C - d937a77598e3d10f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RoomieRadar.BottomTabbar.profileScreen.getter : some"
+                  moduleName = "RoomieRadar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maximillianstabe/Desktop/Coding/Portfolio_Projects/RoomieRadar/App/BottomTabbar.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "3D41E011-FBAF-4C75-B460-2AA32DBCB58C - 4481525a30b346cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.toolbarBackground(_: SwiftUI.Visibility, for: SwiftUI.ToolbarPlacement...) -&gt; some&gt;&gt;.0&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.toolbarBackground(_: SwiftUI.Visibility, for: SwiftUI.ToolbarPlacement...) -&gt; some&gt;&gt;.0&gt;)&gt; in RoomieRadar.BottomTabbar.profileScreen.getter : some"
+                  moduleName = "RoomieRadar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maximillianstabe/Desktop/Coding/Portfolio_Projects/RoomieRadar/App/BottomTabbar.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "672">
+               </Location>
+               <Location
+                  uuid = "3D41E011-FBAF-4C75-B460-2AA32DBCB58C - d937a77598e3d10f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RoomieRadar.BottomTabbar.profileScreen.getter : some"
+                  moduleName = "RoomieRadar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maximillianstabe/Desktop/Coding/Portfolio_Projects/RoomieRadar/App/BottomTabbar.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "3D41E011-FBAF-4C75-B460-2AA32DBCB58C - 4481525a30b346cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.toolbarBackground(_: SwiftUI.Visibility, for: SwiftUI.ToolbarPlacement...) -&gt; some&gt;&gt;.0&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.toolbarBackground(_: SwiftUI.Visibility, for: SwiftUI.ToolbarPlacement...) -&gt; some&gt;&gt;.0&gt;)&gt; in RoomieRadar.BottomTabbar.profileScreen.getter : some"
+                  moduleName = "RoomieRadar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maximillianstabe/Desktop/Coding/Portfolio_Projects/RoomieRadar/App/BottomTabbar.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "952">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "10B480BC-C5AF-4CD6-BCE3-C8E8C3CE5FD2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Packages/RoomieRadarCoreData/Sources/RoomieRadarCoreData/Resources/WGOfferer+CoreDataClass.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "updateLocalDataWithFirestore(database:user:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E5E10FB9-03D6-4834-B492-94C2E1FB16C9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Packages/RoomieRadarCoreData/Sources/RoomieRadarCoreData/Resources/WGOfferer+CoreDataClass.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "updateLocalDataWithFirestore(database:user:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
