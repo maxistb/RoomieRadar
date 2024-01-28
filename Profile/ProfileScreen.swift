@@ -43,37 +43,10 @@ struct ProfileScreen: View {
     VStack(alignment: .trailing) {
       HStack {
         Spacer()
-        LazyImage(url: viewModel.imageURL) { state in
-          if let image = state.image {
-            image
-              .resizable()
-              .clipShape(Circle())
-              .frame(width: 150, height: 150)
-              .overlay(alignment: .bottomTrailing) {
-                Button {
-                  viewModel.showImagePicker = true
-                } label: {
-                  Image(systemName: "pencil.circle.fill")
-                    .font(.system(size: 30))
-                }
-                .buttonStyle(.borderless)
-                .padding(.leading, -20)
-              }
-          } else {
-            Image(systemName: "person.crop.circle.fill")
-              .resizable()
-              .frame(width: 150, height: 150)
-              .clipShape(Circle())
-              .overlay(alignment: .bottomTrailing) {
-                Button {
-                  viewModel.showImagePicker = true
-                } label: {
-                  Image(systemName: "pencil.circle.fill")
-                    .font(.system(size: 30))
-                }
-                .buttonStyle(.borderless)
-                .padding(.leading, -20)
-              }
+        LazyImage(url: viewModel.avatarImage != nil ? nil : viewModel.imageURL) { state in
+          let image = state.image ?? viewModel.avatarImage.map { Image(uiImage: $0) }
+          imageOverlayView(image: image ?? Image(systemName: "person.crop.circle.fill")) {
+            viewModel.showImagePicker = true
           }
         }
         Spacer()
@@ -82,20 +55,9 @@ struct ProfileScreen: View {
     .padding(.bottom, -10)
     .listRowBackground(Color.clear)
     .listRowSeparator(.hidden)
-    .onChange(of: viewModel.avatarImage) { newValue in
-      print("CHANGED")
+    .onChange(of: viewModel.avatarImage) { _ in
       viewModel.persistImageToStorage()
     }
-//    .onChange(of: viewModel.avatarItem) { _ in
-//      Task {
-//        if let loaded = try? await viewModel.avatarItem?.loadTransferable(type: Image.self) {
-//          viewModel.avatarImage = loaded
-//        } else {
-//          viewModel.showError = true
-//          viewModel.errorMessage = L10n.genericError
-//        }
-//      }
-//    }
   }
 
   private var wgSearcherTextFields: some View {
@@ -271,6 +233,21 @@ struct ProfileScreen: View {
         .lineLimit(1 ... 5)
     }
   }
+
+  private func imageOverlayView(image: Image?, action: @escaping () -> Void) -> some View {
+    image?
+      .resizable()
+      .clipShape(Circle())
+      .frame(width: 150, height: 150)
+      .overlay(alignment: .bottomTrailing) {
+        Button(action: action) {
+          Image(systemName: "pencil.circle.fill")
+            .font(.system(size: 30))
+        }
+        .buttonStyle(.borderless)
+        .padding(.leading, -20)
+      }
+  }
 }
 
 struct ImagePicker: UIViewControllerRepresentable {
@@ -289,7 +266,10 @@ struct ImagePicker: UIViewControllerRepresentable {
       self.parent = parent
     }
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    func imagePickerController(
+      _ picker: UIImagePickerController,
+      didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
+    ) {
       parent.image = info[.originalImage] as? UIImage
       picker.dismiss(animated: true)
     }

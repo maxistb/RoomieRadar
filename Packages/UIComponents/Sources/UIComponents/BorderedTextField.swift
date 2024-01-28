@@ -48,7 +48,7 @@ public struct BorderedTextField: View {
 
   private var textField: some View {
     Group {
-      if passwordVisible || isPasswordField {
+      if !passwordVisible && isPasswordField {
         SecureField(placeholder, text: $textInput)
           .id("TEXTFIELD")
           .focused($isTextFieldFocus)
@@ -77,7 +77,7 @@ public struct BorderedTextField: View {
 
   private var imageForTextFieldFocus: Image {
     if isPasswordField {
-      Image(systemName: passwordVisible ? "eye.slash.fill" : "eye.fill")
+      Image(systemName: passwordVisible ? "eye.fill" : "eye.slash.fill")
     } else {
       Image(systemName: "xmark.circle")
     }

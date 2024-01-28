@@ -18,7 +18,17 @@ struct WGOfferer {
   var wgPrice: String
   var wgSize: String
 
-  public static var shared = WGOfferer(address: "", contactInfo: "", id: "", idealRoommate: "", imageString: "", name: "", wgDescription: "", wgPrice: "", wgSize: "")
+  public static var shared = WGOfferer(
+    address: "",
+    contactInfo: "",
+    id: "",
+    idealRoommate: "",
+    imageString: "",
+    name: "",
+    wgDescription: "",
+    wgPrice: "",
+    wgSize: ""
+  )
 
   public func updateFirestoreWGOfferer(docRef: DocumentReference) {
     let docData: [String: Any] = [
