@@ -160,7 +160,7 @@ struct AuthenticationScreen: View {
   }
 }
 
-enum ViewState {
+enum AuthenticationViewState {
   case login
   case register
 

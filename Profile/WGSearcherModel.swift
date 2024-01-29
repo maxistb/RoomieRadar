@@ -18,14 +18,14 @@ public struct WGSearcher {
   var ownDescription: String
 
   public static var shared = WGSearcher(
-    age: "",
-    contactInfo: "",
-    gender: "",
-    hobbies: "",
+    age: "21",
+    contactInfo: "Meine E-Mail-Adresse",
+    gender: "M",
+    hobbies: "Handball, Gym, Coden",
     id: "",
-    imageString: "",
-    name: "",
-    ownDescription: ""
+    imageString: "https://picsum.photos/id/1/200/300",
+    name: "Maximillian",
+    ownDescription: "Ich studiere aktuell SSE an der Uni Hamburg und arbeite nebenbei bei der Haspa Next als iOS-Entwickler. Ich suche nach einer neuen WG mit netten Leuten in Stellingen."
   )
 
   public func updateFirestoreWGOfferer(docRef: DocumentReference) {

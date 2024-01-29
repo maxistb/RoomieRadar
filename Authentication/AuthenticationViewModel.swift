@@ -10,7 +10,7 @@ import Styleguide
 
 @MainActor
 final class AuthenticationViewModel: ObservableObject {
-  @Published var viewState: ViewState
+  @Published var viewState: AuthenticationViewState
 
   @Published var email: String
   @Published var password: String

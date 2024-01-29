@@ -19,15 +19,15 @@ struct WGOfferer {
   var wgSize: String
 
   public static var shared = WGOfferer(
-    address: "",
-    contactInfo: "",
+    address: "Adress",
+    contactInfo: "Meine E-Mail-Adresse:",
     id: "",
-    idealRoommate: "",
-    imageString: "",
-    name: "",
-    wgDescription: "",
-    wgPrice: "",
-    wgSize: ""
+    idealRoommate: "Wir suchen nach einem neuen netten Mitbewohner. Er sollte Spaß am Trinken haben, selber aufräumen und organisiert sein.",
+    imageString: "https://picsum.photos/id/1/200/300",
+    name: "RoomieRadarWG",
+    wgDescription: "Wir sind ein zusammengewürfelter Haufen. Wir akzeptieren alle Leute und trinken gerne mal Abends zusammen.",
+    wgPrice: "430",
+    wgSize: "12"
   )
 
   public func updateFirestoreWGOfferer(docRef: DocumentReference) {
