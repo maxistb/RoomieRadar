@@ -8,6 +8,7 @@ import SwiftUI
 import UIComponents
 
 struct SwipingScreen: View {
+  @ObservedObject var viewModel = SwipingScreenViewModel()
   @State private var showMoreInfo = false
 
   let viewState: ViewState
@@ -41,8 +42,10 @@ struct SwipingScreen: View {
         }
       }
       .presentationDragIndicator(.visible)
-
     })
+    .onAppear {
+      viewModel.getAllWGOfferer()
+    }
     .ignoresSafeArea(edges: .top)
   }
 

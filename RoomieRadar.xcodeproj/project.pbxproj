@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		7A2642F82B66EADF00B61518 /* SwipingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2642F72B66EADF00B61518 /* SwipingScreen.swift */; };
+		7A2642FA2B683C6000B61518 /* SwipingScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2642F92B683C6000B61518 /* SwipingScreenViewModel.swift */; };
 		7A68B5AB2B655E99007F5715 /* WGOffererModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A68B5AA2B655E99007F5715 /* WGOffererModel.swift */; };
 		7A68B5AD2B655EA1007F5715 /* WGSearcherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A68B5AC2B655EA1007F5715 /* WGSearcherModel.swift */; };
 		7AB565082B5D41D1009316A1 /* EmptyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB565072B5D41D1009316A1 /* EmptyScreen.swift */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		7A2642F72B66EADF00B61518 /* SwipingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingScreen.swift; sourceTree = "<group>"; };
+		7A2642F92B683C6000B61518 /* SwipingScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingScreenViewModel.swift; sourceTree = "<group>"; };
 		7A2B46032B63D63B007E0A31 /* RoomieRadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = RoomieRadar.app; path = "/Users/maximillianstabe/Desktop/Coding/Portfolio_Projects/RoomieRadar/build/Debug-iphoneos/RoomieRadar.app"; sourceTree = "<absolute>"; };
 		7A4AB6B62B5EA98D006C1425 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7A68B5AA2B655E99007F5715 /* WGOffererModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WGOffererModel.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				7A2642F72B66EADF00B61518 /* SwipingScreen.swift */,
+				7A2642F92B683C6000B61518 /* SwipingScreenViewModel.swift */,
 			);
 			path = Swiping;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				7A2642F82B66EADF00B61518 /* SwipingScreen.swift in Sources */,
 				7ADCBE7B2B618D6200AF2C3A /* AuthenticationViewModel.swift in Sources */,
 				7AEE63522B644D8C0024A43D /* ProfileScreen.swift in Sources */,
+				7A2642FA2B683C6000B61518 /* SwipingScreenViewModel.swift in Sources */,
 				7AEE63562B64EB420024A43D /* ProfileScreenViewModel.swift in Sources */,
 				7AB5650B2B5D45B4009316A1 /* AuthenticationScreen.swift in Sources */,
 				7AB565082B5D41D1009316A1 /* EmptyScreen.swift in Sources */,
