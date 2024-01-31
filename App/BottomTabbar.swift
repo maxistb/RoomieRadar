@@ -25,7 +25,7 @@ struct BottomTabbar: View {
         }
         .toolbarBackground(.visible, for: .tabBar)
 
-      SwipingScreen(viewState: .wgOfferer)
+      TestMainView()
         .tabItem {
           Image(systemName: "arrow.left.arrow.right")
           Text("Swiping")

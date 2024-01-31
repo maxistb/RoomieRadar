@@ -21,11 +21,19 @@ struct SwipingScreen: View {
   }
 
   var body: some View {
+    if let currentWGOfferer = viewModel.currentWGOfferer {
+      createNormalView(currentWGOfferer: currentWGOfferer)
+    } else {
+      createNormalView(currentWGOfferer: WGOfferer.shared)
+    }
+  }
+
+  private func createNormalView(currentWGOfferer: WGOfferer) -> some View {
     VStack(alignment: .leading) {
-      imageView
+      imageView(currentWGOfferer: currentWGOfferer)
         .overlay(alignment: .bottomLeading) {
           VStack {
-            nameAndDescription
+            nameAndDescription(currentWGOfferer: currentWGOfferer)
               .padding(10)
               .padding(.bottom, 20)
             buttons
@@ -43,14 +51,11 @@ struct SwipingScreen: View {
       }
       .presentationDragIndicator(.visible)
     })
-    .onAppear {
-      viewModel.getAllWGOfferer()
-    }
     .ignoresSafeArea(edges: .top)
   }
 
   @MainActor
-  private var imageView: some View {
+  private func imageView(currentWGOfferer: WGOfferer) -> some View {
     LazyImage(url: URL(string:
       showsWGOfferer
         ? WGOfferer.shared.imageString
@@ -63,21 +68,14 @@ struct SwipingScreen: View {
     }
   }
 
-  private var nameAndDescription: some View {
+  private func nameAndDescription(currentWGOfferer: WGOfferer) -> some View {
     VStack(alignment: .leading) {
-      HStack {
-        Text(showsWGOfferer ? WGOfferer.shared.name : "\(WGSearcher.shared.name),")
-          .font(.title)
-          .bold()
-
-        if !showsWGOfferer {
-          Text(WGSearcher.shared.age)
-            .font(.title2)
-        }
-      }
+      Text(currentWGOfferer.name)
+        .font(.title)
+        .bold()
 
       HStack {
-        Text(showsWGOfferer ? WGOfferer.shared.wgDescription : WGSearcher.shared.ownDescription)
+        Text(currentWGOfferer.wgDescription)
           .font(.subheadline)
           .lineLimit(3)
         Button {
@@ -92,7 +90,11 @@ struct SwipingScreen: View {
 
   private var buttons: some View {
     HStack(spacing: 30) {
-      SwipingButton(isLikeButton: false) {}
+      SwipingButton(isLikeButton: false) {
+        if viewModel.wgOffererArray.count > 1 {
+          viewModel.wgOffererArray.removeFirst(1)
+        }
+      }
       SwipingButton(isLikeButton: true) {}
     }
   }
