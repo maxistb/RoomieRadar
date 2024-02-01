@@ -37,12 +37,12 @@ struct WGOffererCardView: View {
           changeColor(width: offset.width)
         }
       }
-      .onEnded({ _ in
+      .onEnded { _ in
         withAnimation {
           swipeCard(width: offset.width)
           changeColor(width: offset.width)
         }
-      }))
+      })
   }
 
   private func swipeCard(width: CGFloat) {

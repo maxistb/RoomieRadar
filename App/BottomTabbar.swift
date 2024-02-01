@@ -25,7 +25,7 @@ struct BottomTabbar: View {
         }
         .toolbarBackground(.visible, for: .tabBar)
 
-      TestMainView()
+      SwipingScreen()
         .tabItem {
           Image(systemName: "arrow.left.arrow.right")
           Text("Swiping")
