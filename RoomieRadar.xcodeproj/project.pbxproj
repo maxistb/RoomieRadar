@@ -21,12 +21,13 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		7A2642F82B66EADF00B61518 /* OldSwipingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2642F72B66EADF00B61518 /* OldSwipingScreen.swift */; };
 		7A2642FA2B683C6000B61518 /* SwipingScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2642F92B683C6000B61518 /* SwipingScreenViewModel.swift */; };
 		7A2642FC2B6AE16400B61518 /* SwipingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2642FB2B6AE16400B61518 /* SwipingScreen.swift */; };
-		7A2642FE2B6AE1E300B61518 /* WGOffererCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2642FD2B6AE1E300B61518 /* WGOffererCardView.swift */; };
+		7A2642FE2B6AE1E300B61518 /* SwipingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2642FD2B6AE1E300B61518 /* SwipingCardView.swift */; };
 		7A68B5AB2B655E99007F5715 /* WGOffererModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A68B5AA2B655E99007F5715 /* WGOffererModel.swift */; };
 		7A68B5AD2B655EA1007F5715 /* WGSearcherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A68B5AC2B655EA1007F5715 /* WGSearcherModel.swift */; };
+		7A8117ED2B6D5DE200847EDF /* WGOffererCardContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8117EC2B6D5DE200847EDF /* WGOffererCardContent.swift */; };
+		7A8117EF2B6D5F2700847EDF /* WGSearcherCardContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8117EE2B6D5F2700847EDF /* WGSearcherCardContent.swift */; };
 		7AB565082B5D41D1009316A1 /* EmptyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB565072B5D41D1009316A1 /* EmptyScreen.swift */; };
 		7AB5650B2B5D45B4009316A1 /* AuthenticationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB5650A2B5D45B4009316A1 /* AuthenticationScreen.swift */; };
 		7AB565102B5D80EE009316A1 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7AB5650F2B5D80EE009316A1 /* FirebaseAnalytics */; };
@@ -62,14 +63,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7A2642F72B66EADF00B61518 /* OldSwipingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldSwipingScreen.swift; sourceTree = "<group>"; };
 		7A2642F92B683C6000B61518 /* SwipingScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingScreenViewModel.swift; sourceTree = "<group>"; };
 		7A2642FB2B6AE16400B61518 /* SwipingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingScreen.swift; sourceTree = "<group>"; };
-		7A2642FD2B6AE1E300B61518 /* WGOffererCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WGOffererCardView.swift; sourceTree = "<group>"; };
-		7A2B46032B63D63B007E0A31 /* RoomieRadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = RoomieRadar.app; path = "/Users/maximillianstabe/Desktop/Coding/Portfolio_Projects/RoomieRadar/build/Debug-iphoneos/RoomieRadar.app"; sourceTree = "<absolute>"; };
+		7A2642FD2B6AE1E300B61518 /* SwipingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingCardView.swift; sourceTree = "<group>"; };
 		7A4AB6B62B5EA98D006C1425 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7A68B5AA2B655E99007F5715 /* WGOffererModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WGOffererModel.swift; sourceTree = "<group>"; };
 		7A68B5AC2B655EA1007F5715 /* WGSearcherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WGSearcherModel.swift; sourceTree = "<group>"; };
+		7A8117EB2B6D50B300847EDF /* RoomieRadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomieRadar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A8117EC2B6D5DE200847EDF /* WGOffererCardContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WGOffererCardContent.swift; sourceTree = "<group>"; };
+		7A8117EE2B6D5F2700847EDF /* WGSearcherCardContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WGSearcherCardContent.swift; sourceTree = "<group>"; };
 		7AB565072B5D41D1009316A1 /* EmptyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScreen.swift; sourceTree = "<group>"; };
 		7AB5650A2B5D45B4009316A1 /* AuthenticationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationScreen.swift; sourceTree = "<group>"; };
 		7AB565242B5D8E03009316A1 /* swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
@@ -110,10 +112,11 @@
 		7A2642F62B66EABC00B61518 /* Swiping */ = {
 			isa = PBXGroup;
 			children = (
-				7A2642F72B66EADF00B61518 /* OldSwipingScreen.swift */,
 				7A2642F92B683C6000B61518 /* SwipingScreenViewModel.swift */,
 				7A2642FB2B6AE16400B61518 /* SwipingScreen.swift */,
-				7A2642FD2B6AE1E300B61518 /* WGOffererCardView.swift */,
+				7A2642FD2B6AE1E300B61518 /* SwipingCardView.swift */,
+				7A8117EC2B6D5DE200847EDF /* WGOffererCardContent.swift */,
+				7A8117EE2B6D5F2700847EDF /* WGSearcherCardContent.swift */,
 			);
 			path = Swiping;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 				7AEE634C2B63EA190024A43D /* Profile */,
 				7ADCBE872B63962800AF2C3A /* Styleguide */,
 				7ADCBE882B63962800AF2C3A /* UIComponents */,
+				7A8117EB2B6D50B300847EDF /* RoomieRadar.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -221,7 +225,7 @@
 				7AEE635C2B6532490024A43D /* NukeUI */,
 			);
 			productName = RoomieRadar;
-			productReference = 7A2B46032B63D63B007E0A31 /* RoomieRadar.app */;
+			productReference = 7A8117EB2B6D50B300847EDF /* RoomieRadar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -324,18 +328,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AC1B8A42B5C460800C8F568 /* BottomTabbar.swift in Sources */,
-				7A2642F82B66EADF00B61518 /* OldSwipingScreen.swift in Sources */,
 				7ADCBE7B2B618D6200AF2C3A /* AuthenticationViewModel.swift in Sources */,
 				7AEE63522B644D8C0024A43D /* ProfileScreen.swift in Sources */,
 				7A2642FA2B683C6000B61518 /* SwipingScreenViewModel.swift in Sources */,
 				7AEE63562B64EB420024A43D /* ProfileScreenViewModel.swift in Sources */,
 				7AB5650B2B5D45B4009316A1 /* AuthenticationScreen.swift in Sources */,
 				7AB565082B5D41D1009316A1 /* EmptyScreen.swift in Sources */,
+				7A8117EF2B6D5F2700847EDF /* WGSearcherCardContent.swift in Sources */,
 				7A68B5AD2B655EA1007F5715 /* WGSearcherModel.swift in Sources */,
-				7A2642FE2B6AE1E300B61518 /* WGOffererCardView.swift in Sources */,
+				7A2642FE2B6AE1E300B61518 /* SwipingCardView.swift in Sources */,
 				7A2642FC2B6AE16400B61518 /* SwipingScreen.swift in Sources */,
 				7AC1B8842B5C321000C8F568 /* RoomieRadarApp.swift in Sources */,
 				7A68B5AB2B655E99007F5715 /* WGOffererModel.swift in Sources */,
+				7A8117ED2B6D5DE200847EDF /* WGOffererCardContent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

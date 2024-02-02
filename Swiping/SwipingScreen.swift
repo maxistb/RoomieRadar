@@ -7,55 +7,31 @@ import FirebaseFirestore
 import SwiftUI
 
 struct SwipingScreen: View {
-  @State private var wgOffererArray: [WGOfferer] = []
+  @ObservedObject private var viewModel = SwipingScreenViewModel()
+
+  // is true if the current user is wgofferer
+  let isWGOffererState: Bool
 
   var body: some View {
     VStack {
       ZStack {
-        ForEach(wgOffererArray, id: \.id) { wgOfferer in
-          WGOffererCardView(wgOfferer: wgOfferer)
+        if isWGOffererState {
+          ForEach(viewModel.wgOffererArray, id: \.id) { wgOfferer in
+            SwipingCardView(wgOfferer: wgOfferer, wgSearcher: nil)
+          }
+        } else {
+          ForEach(viewModel.wgSearcherArray, id: \.id) { wgSearcher in
+            SwipingCardView(wgOfferer: nil, wgSearcher: wgSearcher)
+          }
         }
       }
     }
     .onAppear {
-      getAllWGOfferer()
-    }
-  }
-
-  func getAllWGOfferer() {
-    Firestore
-      .firestore()
-      .collection("WGOfferer")
-      .getDocuments { snapshot, error in
-        guard let snapshot = snapshot, error == nil else { return }
-
-        snapshot.documents.forEach { documentSnapshot in
-          let documentData = documentSnapshot.data()
-
-          if let address = documentData["address"] as? String,
-             let contactInfo = documentData["contactInfo"] as? String,
-             let idealRoommate = documentData["idealRoommate"] as? String,
-             let imageString = documentData["imageString"] as? String,
-             let name = documentData["name"] as? String,
-             let wgDescription = documentData["wgDescription"] as? String,
-             let wgPrice = documentData["wgPrice"] as? String,
-             let wgSize = documentData["wgSize"] as? String
-          {
-            let wgOfferer = WGOfferer(
-              address: address,
-              contactInfo: contactInfo,
-              id: documentSnapshot.documentID,
-              idealRoommate: idealRoommate,
-              imageString: imageString,
-              name: name,
-              wgDescription: wgDescription,
-              wgPrice: wgPrice,
-              wgSize: wgSize
-            )
-
-            self.wgOffererArray.append(wgOfferer)
-          }
-        }
+      if isWGOffererState {
+        viewModel.getAllWGOfferer()
+      } else {
+        viewModel.getAllWGSearcher()
       }
+    }
   }
 }

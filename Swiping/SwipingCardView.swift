@@ -3,30 +3,29 @@
 // Copyright © 2024 Maximillian Joel Stabe. All rights reserved.
 //
 
+import NukeUI
 import SwiftUI
+import UIComponents
 
-struct WGOffererCardView: View {
-  let wgOfferer: WGOfferer
+struct SwipingCardView: View {
+  let wgOfferer: WGOfferer?
+  let wgSearcher: WGSearcher?
 
   @State private var offset = CGSize.zero
-  @State private var color: Color = .black
+  @State private var color: Color = .clear
 
   var body: some View {
     ZStack {
-      Rectangle()
-        .frame(width: 320, height: 420)
-        .border(.white, width: 6)
-        .foregroundStyle(color.opacity(0.9))
-        .shadow(radius: 4)
-
-      HStack {
-        Text(wgOfferer.name)
-          .font(.largeTitle)
-          .foregroundStyle(.white)
-          .bold()
-        Image(systemName: "heart.fill")
-          .foregroundStyle(.red)
+      if let wgOfferer = wgOfferer {
+        WGOffererCardContent(wgOfferer: wgOfferer, offset: $offset)
       }
+      if let wgSearcher = wgSearcher {
+        WGSearcherCardContent(wgSearcher: wgSearcher, offset: $offset)
+      }
+
+      Rectangle()
+        .foregroundStyle(color.opacity(0.6))
+        .shadow(radius: 4)
     }
     .offset(x: offset.width, y: offset.height)
     .rotationEffect(.degrees(Double(offset.width / 40)))
@@ -47,10 +46,10 @@ struct WGOffererCardView: View {
 
   private func swipeCard(width: CGFloat) {
     switch width {
-    case -500 ... -150:
+    case -500 ... -130:
       print("REMOVED ")
       offset = CGSize(width: -500, height: 0)
-    case 150 ... 500:
+    case 130 ... 500:
       print("ADDED")
       offset = CGSize(width: 500, height: 0)
     default:
@@ -65,7 +64,7 @@ struct WGOffererCardView: View {
     case 130 ... 500:
       color = .green
     default:
-      color = .black
+      color = .clear
     }
   }
 }

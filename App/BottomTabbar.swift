@@ -10,10 +10,12 @@ import SwiftUI
 struct BottomTabbar: View {
   let user: User
   let isWGOffererState: Bool
+  let profileScreenViewModel: ProfileScreenViewModel
 
   init(user: User, isWGOffererState: Bool) {
     self.user = user
     self.isWGOffererState = isWGOffererState
+    self.profileScreenViewModel = ProfileScreenViewModel(isWGOffererState: isWGOffererState, user: user)
   }
 
   var body: some View {
@@ -25,30 +27,21 @@ struct BottomTabbar: View {
         }
         .toolbarBackground(.visible, for: .tabBar)
 
-      SwipingScreen()
+      SwipingScreen(isWGOffererState: isWGOffererState)
         .tabItem {
           Image(systemName: "arrow.left.arrow.right")
           Text("Swiping")
         }
         .toolbarBackground(.visible, for: .tabBar)
 
-      profileScreen
-    }
-    .onAppear {
-      print("STATE: \(isWGOffererState)")
+      ProfileScreen(viewModel: profileScreenViewModel)
+        .tabItem {
+          Image(systemName: "person.crop.circle")
+          Text("Profil")
+        }
+        .toolbarBackground(.visible, for: .tabBar)
     }
     .tint(Asset.Color.beatzColor.swiftUIColor)
     .navigationBarBackButtonHidden()
-  }
-
-  private var profileScreen: some View {
-    let viewModel = ProfileScreenViewModel(isWGOffererState: isWGOffererState, user: user)
-
-    return ProfileScreen(viewModel: viewModel)
-      .tabItem {
-        Image(systemName: "person.crop.circle")
-        Text("Profil")
-      }
-      .toolbarBackground(.visible, for: .tabBar)
   }
 }
