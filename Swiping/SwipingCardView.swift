@@ -18,7 +18,7 @@ struct SwipingCardView: View {
       if let wgOfferer = wgOfferer {
         WGOffererCardContent(wgOfferer: wgOfferer, viewModel: viewModel)
       }
-      if let wgSearcher = wgSearcher {
+      else if let wgSearcher = wgSearcher {
         WGSearcherCardContent(wgSearcher: wgSearcher, viewModel: viewModel)
       }
 
@@ -38,10 +38,10 @@ struct SwipingCardView: View {
       .onEnded { _ in
         withAnimation {
           if let wgOfferer = wgOfferer {
-            viewModel.swipeCard(likedUserID: wgOfferer.id)
+            viewModel.swipeCard(userID: wgOfferer.id)
           }
-          if let wgSearcher = wgSearcher {
-            viewModel.swipeCard(likedUserID: wgSearcher.id)
+          else if let wgSearcher = wgSearcher {
+            viewModel.swipeCard(userID: wgSearcher.id)
           }
 
           viewModel.changeColor(width: viewModel.offset.width)

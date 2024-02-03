@@ -69,12 +69,13 @@ struct WGSearcherCardContent: View {
       SwipingButton(isLikeButton: false) {
         withAnimation {
           viewModel.offset = CGSize(width: -500, height: 0)
+          viewModel.dislikeUser(dislikedUserID: wgSearcher.id)
         }
       }
       SwipingButton(isLikeButton: true) {
         withAnimation {
           viewModel.offset = CGSize(width: 500, height: 0)
-          viewModel.swipeCard(likedUserID: wgSearcher.id)
+          viewModel.likeUser(likedUserID: wgSearcher.id)
         }
       }
       Spacer()

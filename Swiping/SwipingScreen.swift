@@ -15,7 +15,7 @@ struct SwipingScreen: View {
   var body: some View {
     VStack {
       ZStack {
-        if isWGOffererState {
+        if !isWGOffererState {
           ForEach(viewModel.wgOffererArray, id: \.id) { wgOfferer in
             SwipingCardView(wgOfferer: wgOfferer, wgSearcher: nil)
           }
@@ -27,10 +27,14 @@ struct SwipingScreen: View {
       }
     }
     .onAppear {
-      if isWGOffererState {
+      if !isWGOffererState {
         viewModel.getAllWGOfferer()
       } else {
-        viewModel.getAllWGSearcher()
+        viewModel.getAllWGSearcher { wgSearcher, _ in
+          if let wgSearcher = wgSearcher {
+            viewModel.wgSearcherArray = wgSearcher
+          }
+        }
       }
     }
   }

@@ -13,13 +13,13 @@ class SwipingCardViewModel: ObservableObject {
   @Published var hasError = false
   @Published var errorMessage = ""
 
-  func swipeCard(likedUserID: String) {
+  func swipeCard(userID: String) {
     switch offset.width {
     case -500 ... -130:
-      print("REMOVED ")
+      dislikeUser(dislikedUserID: userID)
       offset = CGSize(width: -500, height: 0)
     case 130 ... 500:
-      likeUser(likedUserID: likedUserID)
+      likeUser(likedUserID: userID)
       offset = CGSize(width: 500, height: 0)
     default:
       offset = .zero
@@ -39,19 +39,34 @@ class SwipingCardViewModel: ObservableObject {
 
   func likeUser(likedUserID: String) {
     if let currentUserID = Auth.auth().currentUser?.uid {
-      let likesDocument = Firestore.firestore().collection("Likes")
+      let likesDocument = Firestore.firestore().collection("Swipes")
 
       let likedUserDocument = likesDocument.document(likedUserID)
       let currentUserDocument = likesDocument.document(currentUserID)
 
-      currentUserDocument.setData(["Liked": FieldValue.arrayUnion([likedUserID])], merge: true) { error in
+      currentUserDocument.setData(["liked": FieldValue.arrayUnion([likedUserID])], merge: true) { error in
         if let error = error {
           self.hasError = true
           self.errorMessage = error.localizedDescription
         }
       }
 
-      likedUserDocument.setData(["LikedBy": FieldValue.arrayUnion([currentUserID])], merge: true) { error in
+      likedUserDocument.setData(["likedBy": FieldValue.arrayUnion([currentUserID])], merge: true) { error in
+        if let error = error {
+          self.hasError = true
+          self.errorMessage = error.localizedDescription
+        }
+      }
+    }
+  }
+
+  func dislikeUser(dislikedUserID: String) {
+    if let currentUserID = Auth.auth().currentUser?.uid {
+      let likesDocument = Firestore.firestore().collection("Swipes")
+
+      let currentUserDocument = likesDocument.document(currentUserID)
+
+      currentUserDocument.setData(["disliked": FieldValue.arrayUnion([dislikedUserID])], merge: true) { error in
         if let error = error {
           self.hasError = true
           self.errorMessage = error.localizedDescription
