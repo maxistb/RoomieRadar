@@ -11,60 +11,41 @@ struct SwipingCardView: View {
   let wgOfferer: WGOfferer?
   let wgSearcher: WGSearcher?
 
-  @State private var offset = CGSize.zero
-  @State private var color: Color = .clear
+  @ObservedObject private var viewModel = SwipingCardViewModel()
 
   var body: some View {
     ZStack {
       if let wgOfferer = wgOfferer {
-        WGOffererCardContent(wgOfferer: wgOfferer, offset: $offset)
+        WGOffererCardContent(wgOfferer: wgOfferer, viewModel: viewModel)
       }
       if let wgSearcher = wgSearcher {
-        WGSearcherCardContent(wgSearcher: wgSearcher, offset: $offset)
+        WGSearcherCardContent(wgSearcher: wgSearcher, viewModel: viewModel)
       }
 
       Rectangle()
-        .foregroundStyle(color.opacity(0.6))
+        .foregroundStyle(viewModel.color.opacity(0.6))
         .shadow(radius: 4)
     }
-    .offset(x: offset.width, y: offset.height)
-    .rotationEffect(.degrees(Double(offset.width / 40)))
+    .offset(x: viewModel.offset.width, y: viewModel.offset.height)
+    .rotationEffect(.degrees(Double(viewModel.offset.width / 40)))
     .gesture(DragGesture()
       .onChanged { gesture in
-        offset = gesture.translation
+        viewModel.offset = gesture.translation
         withAnimation {
-          changeColor(width: offset.width)
+          viewModel.changeColor(width: viewModel.offset.width)
         }
       }
       .onEnded { _ in
         withAnimation {
-          swipeCard(width: offset.width)
-          changeColor(width: offset.width)
+          if let wgOfferer = wgOfferer {
+            viewModel.swipeCard(likedUserID: wgOfferer.id)
+          }
+          if let wgSearcher = wgSearcher {
+            viewModel.swipeCard(likedUserID: wgSearcher.id)
+          }
+
+          viewModel.changeColor(width: viewModel.offset.width)
         }
       })
-  }
-
-  private func swipeCard(width: CGFloat) {
-    switch width {
-    case -500 ... -130:
-      print("REMOVED ")
-      offset = CGSize(width: -500, height: 0)
-    case 130 ... 500:
-      print("ADDED")
-      offset = CGSize(width: 500, height: 0)
-    default:
-      offset = .zero
-    }
-  }
-
-  private func changeColor(width: CGFloat) {
-    switch width {
-    case -500 ... -130:
-      color = .red
-    case 130 ... 500:
-      color = .green
-    default:
-      color = .clear
-    }
   }
 }

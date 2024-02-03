@@ -9,8 +9,9 @@ import UIComponents
 
 struct WGOffererCardContent: View {
   let wgOfferer: WGOfferer
+  let viewModel: SwipingCardViewModel
+
   @State private var showMoreInfo = false
-  @Binding var offset: CGSize
 
   var body: some View {
     VStack {
@@ -67,12 +68,13 @@ struct WGOffererCardContent: View {
       Spacer()
       SwipingButton(isLikeButton: false) {
         withAnimation {
-          offset = CGSize(width: -500, height: 0)
+          viewModel.offset = CGSize(width: -500, height: 0)
         }
       }
       SwipingButton(isLikeButton: true) {
         withAnimation {
-          offset = CGSize(width: 500, height: 0)
+          viewModel.offset = CGSize(width: 500, height: 0)
+          viewModel.swipeCard(likedUserID: wgOfferer.id)
         }
       }
       Spacer()

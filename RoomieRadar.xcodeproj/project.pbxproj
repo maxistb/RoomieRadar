@@ -50,6 +50,7 @@
 		7AEE63592B6532490024A43D /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEE63582B6532490024A43D /* Nuke */; };
 		7AEE635B2B6532490024A43D /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEE635A2B6532490024A43D /* NukeExtensions */; };
 		7AEE635D2B6532490024A43D /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEE635C2B6532490024A43D /* NukeUI */; };
+		7AF322DD2B6EBA3400BE5AF4 /* SwipingCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF322DC2B6EBA3400BE5AF4 /* SwipingCardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		7ADCBE882B63962800AF2C3A /* UIComponents */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = UIComponents; path = Packages/UIComponents; sourceTree = "<group>"; };
 		7AEE63512B644D8C0024A43D /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		7AEE63552B64EB420024A43D /* ProfileScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenViewModel.swift; sourceTree = "<group>"; };
+		7AF322DC2B6EBA3400BE5AF4 /* SwipingCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingCardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				7A2642F92B683C6000B61518 /* SwipingScreenViewModel.swift */,
 				7A2642FB2B6AE16400B61518 /* SwipingScreen.swift */,
 				7A2642FD2B6AE1E300B61518 /* SwipingCardView.swift */,
+				7AF322DC2B6EBA3400BE5AF4 /* SwipingCardViewModel.swift */,
 				7A8117EC2B6D5DE200847EDF /* WGOffererCardContent.swift */,
 				7A8117EE2B6D5F2700847EDF /* WGSearcherCardContent.swift */,
 			);
@@ -338,6 +341,7 @@
 				7A68B5AD2B655EA1007F5715 /* WGSearcherModel.swift in Sources */,
 				7A2642FE2B6AE1E300B61518 /* SwipingCardView.swift in Sources */,
 				7A2642FC2B6AE16400B61518 /* SwipingScreen.swift in Sources */,
+				7AF322DD2B6EBA3400BE5AF4 /* SwipingCardViewModel.swift in Sources */,
 				7AC1B8842B5C321000C8F568 /* RoomieRadarApp.swift in Sources */,
 				7A68B5AB2B655E99007F5715 /* WGOffererModel.swift in Sources */,
 				7A8117ED2B6D5DE200847EDF /* WGOffererCardContent.swift in Sources */,

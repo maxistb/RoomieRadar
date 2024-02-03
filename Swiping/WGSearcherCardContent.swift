@@ -9,7 +9,7 @@ import UIComponents
 
 struct WGSearcherCardContent: View {
   let wgSearcher: WGSearcher
-  @Binding var offset: CGSize
+  let viewModel: SwipingCardViewModel
 
   @State private var showMoreInfo = false
 
@@ -68,12 +68,13 @@ struct WGSearcherCardContent: View {
       Spacer()
       SwipingButton(isLikeButton: false) {
         withAnimation {
-          offset = CGSize(width: -500, height: 0)
+          viewModel.offset = CGSize(width: -500, height: 0)
         }
       }
       SwipingButton(isLikeButton: true) {
         withAnimation {
-          offset = CGSize(width: 500, height: 0)
+          viewModel.offset = CGSize(width: 500, height: 0)
+          viewModel.swipeCard(likedUserID: wgSearcher.id)
         }
       }
       Spacer()
