@@ -46,11 +46,13 @@ struct WGOffererCardContent: View {
   private var nameAndDescription: some View {
     VStack(alignment: .leading) {
       Text(wgOfferer.name)
+        .foregroundStyle(.white)
         .font(.title)
         .bold()
 
       HStack {
         Text(wgOfferer.wgDescription)
+          .foregroundStyle(.white)
           .font(.subheadline)
           .lineLimit(3)
         Button {
@@ -66,14 +68,16 @@ struct WGOffererCardContent: View {
   private var buttons: some View {
     HStack(spacing: 30) {
       Spacer()
-      SwipingButton(isLikeButton: false) {
+      SwipingButton(state: .dislike) {
         withAnimation {
+          showMoreInfo = false
           viewModel.offset = CGSize(width: -500, height: 0)
           viewModel.dislikeUser(dislikedUserID: wgOfferer.id)
         }
       }
-      SwipingButton(isLikeButton: true) {
+      SwipingButton(state: .like) {
         withAnimation {
+          showMoreInfo = false
           viewModel.offset = CGSize(width: 500, height: 0)
           viewModel.likeUser(likedUserID: wgOfferer.id)
         }
@@ -84,22 +88,53 @@ struct WGOffererCardContent: View {
 
   @MainActor
   private var wgOffererMoreInfo: some View {
-    VStack {
-      LazyImage(url: URL(string: WGOfferer.shared.imageString)) { state in
+    ScrollView {
+      LazyImage(url: URL(string: wgOfferer.imageString)) { state in
         if let image = state.image {
           image
             .resizable()
-            .clipShape(Circle())
-            .frame(width: 60, height: 60)
+            .ignoresSafeArea(.all, edges: .top)
         }
       }
-      Text(WGOfferer.shared.name)
-      Text(WGOfferer.shared.address)
-      Text(WGOfferer.shared.contactInfo)
-      Text(WGOfferer.shared.idealRoommate)
-      Text(WGOfferer.shared.wgDescription)
-      Text(WGOfferer.shared.wgSize)
-      Text(WGOfferer.shared.wgPrice)
+
+      HStack {
+        Spacer()
+        SwipingButton(state: .info) {
+          showMoreInfo = false
+        }
+        .padding(.top, -40)
+      }
+      .padding(.horizontal, 12)
+
+      VStack(alignment: .leading, spacing: 10) {
+        Text(wgOfferer.name)
+          .font(.title2)
+          .bold()
+        Text("\(Image(systemName: "mappin")) \(wgOfferer.address)")
+        Text("\(wgOfferer.wgSize)m²")
+        Text("\(wgOfferer.wgPrice)€ mtl.")
+        Divider()
+        Text("Wonach suchen wir?")
+          .font(.title3)
+          .bold()
+        Text(wgOfferer.idealRoommate)
+        Divider()
+        Text("Beschreibung")
+          .font(.title3)
+          .bold()
+        Text(wgOfferer.wgDescription)
+        Divider()
+        Text("Kontakt")
+          .font(.title3)
+          .bold()
+        Text(wgOfferer.contactInfo)
+      }
+      .padding(12)
+      .padding(.bottom, 60)
+    }
+    .multilineTextAlignment(.leading)
+    .overlay(alignment: .bottom) {
+      buttons
     }
   }
 }

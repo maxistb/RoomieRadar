@@ -17,8 +17,7 @@ struct SwipingCardView: View {
     ZStack {
       if let wgOfferer = wgOfferer {
         WGOffererCardContent(wgOfferer: wgOfferer, viewModel: viewModel)
-      }
-      else if let wgSearcher = wgSearcher {
+      } else if let wgSearcher = wgSearcher {
         WGSearcherCardContent(wgSearcher: wgSearcher, viewModel: viewModel)
       }
 
@@ -39,8 +38,7 @@ struct SwipingCardView: View {
         withAnimation {
           if let wgOfferer = wgOfferer {
             viewModel.swipeCard(userID: wgOfferer.id)
-          }
-          else if let wgSearcher = wgSearcher {
+          } else if let wgSearcher = wgSearcher {
             viewModel.swipeCard(userID: wgSearcher.id)
           }
 

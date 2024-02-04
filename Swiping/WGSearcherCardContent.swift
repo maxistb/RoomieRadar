@@ -66,13 +66,13 @@ struct WGSearcherCardContent: View {
   private var buttons: some View {
     HStack(spacing: 30) {
       Spacer()
-      SwipingButton(isLikeButton: false) {
+      SwipingButton(state: .dislike) {
         withAnimation {
           viewModel.offset = CGSize(width: -500, height: 0)
           viewModel.dislikeUser(dislikedUserID: wgSearcher.id)
         }
       }
-      SwipingButton(isLikeButton: true) {
+      SwipingButton(state: .like) {
         withAnimation {
           viewModel.offset = CGSize(width: 500, height: 0)
           viewModel.likeUser(likedUserID: wgSearcher.id)
@@ -84,21 +84,51 @@ struct WGSearcherCardContent: View {
 
   @MainActor
   private var wgSearcherMoreInfo: some View {
-    VStack {
-      LazyImage(url: URL(string: WGSearcher.shared.imageString)) { state in
+    ScrollView {
+      LazyImage(url: URL(string: wgSearcher.imageString)) { state in
         if let image = state.image {
           image
             .resizable()
-            .clipShape(Circle())
-            .frame(width: 60, height: 60)
+            .ignoresSafeArea(.all, edges: .top)
         }
       }
-      Text(WGSearcher.shared.name)
-      Text(WGSearcher.shared.age)
-      Text(WGSearcher.shared.gender)
-      Text(WGSearcher.shared.contactInfo)
-      Text(WGSearcher.shared.hobbies)
-      Text(WGSearcher.shared.ownDescription)
+
+      HStack {
+        Spacer()
+        SwipingButton(state: .info) {
+          showMoreInfo = false
+        }
+        .padding(.top, -40)
+      }
+      .padding(.horizontal, 12)
+
+      VStack(alignment: .leading, spacing: 10) {
+        Text("\(wgSearcher.name), \(wgSearcher.age)")
+          .font(.title2)
+          .bold()
+        Text(wgSearcher.gender)
+        Divider()
+        Text("Beschreibung")
+          .font(.title3)
+          .bold()
+        Text(wgSearcher.ownDescription)
+        Divider()
+        Text("Hobbies")
+          .font(.title3)
+          .bold()
+        Text(wgSearcher.hobbies)
+        Divider()
+        Text("Kontakt")
+          .font(.title3)
+          .bold()
+        Text(wgSearcher.contactInfo)
+      }
+      .padding(12)
+      .padding(.bottom, 60)
+    }
+    .multilineTextAlignment(.leading)
+    .overlay(alignment: .bottom) {
+      buttons
     }
   }
 }

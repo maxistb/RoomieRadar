@@ -8,11 +8,11 @@
 import SwiftUI
 
 public struct SwipingButton: View {
-  private let isLikeButton: Bool
+  private let state: ViewState
   private let action: () -> Void
 
-  public init(isLikeButton: Bool, action: @escaping () -> Void) {
-    self.isLikeButton = isLikeButton
+  public init(state: ViewState, action: @escaping () -> Void) {
+    self.state = state
     self.action = action
   }
 
@@ -22,7 +22,7 @@ public struct SwipingButton: View {
     } label: {
       Circle()
         .strokeBorder(style: StrokeStyle(lineWidth: 1))
-        .foregroundStyle(isLikeButton ? .green : .pink)
+        .foregroundStyle(state.color)
         .background {
           Circle()
             .frame(width: 60, height: 60)
@@ -30,13 +30,39 @@ public struct SwipingButton: View {
         }
         .frame(width: 60, height: 60)
         .overlay {
-          Image(systemName: isLikeButton ? "heart.fill" : "xmark")
-            .foregroundStyle(isLikeButton ? .green : .pink)
+          state.image
+            .foregroundStyle(state.color)
         }
     }
   }
 }
 
-#Preview {
-  SwipingButton(isLikeButton: true) {}
+extension SwipingButton {
+  public enum ViewState {
+    case like
+    case dislike
+    case info
+
+    var color: Color {
+      switch self {
+      case .like:
+        Color.green
+      case .dislike:
+        Color.pink
+      case .info:
+        Color.yellow
+      }
+    }
+
+    var image: Image {
+      switch self {
+      case .like:
+        Image(systemName: "heart.fill")
+      case .dislike:
+        Image(systemName: "xmark")
+      case .info:
+        Image(systemName: "arrow.down")
+      }
+    }
+  }
 }
