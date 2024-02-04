@@ -30,11 +30,7 @@ struct SwipingScreen: View {
       if !isWGOffererState {
         viewModel.getAllWGOfferer()
       } else {
-        viewModel.getAllWGSearcher { wgSearcher, _ in
-          if let wgSearcher = wgSearcher {
-            viewModel.wgSearcherArray = wgSearcher
-          }
-        }
+        viewModel.getAllWGSearcher()
       }
     }
   }

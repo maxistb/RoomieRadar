@@ -67,17 +67,12 @@ final class SwipingScreenViewModel: ObservableObject {
     }
   }
 
-  func getAllWGSearcher(completion: @escaping ([WGSearcher]?, Error?) -> Void) {
-    var localWGSearcher: [WGSearcher] = []
-
-    // Retrieve data from the "WGOfferer" collection
+  func getAllWGSearcher() {
     self.database.collection("WGSearcher").getDocuments { wgSnapshot, wgError in
       guard let wgSnapshot = wgSnapshot, wgError == nil else {
-        completion(nil, wgError)
         return
       }
 
-      // Process data from "WGSearcher" collection
       for documentSnapshot in wgSnapshot.documents {
         let documentData = documentSnapshot.data()
 
@@ -89,7 +84,7 @@ final class SwipingScreenViewModel: ObservableObject {
               let name = documentData["name"] as? String,
               let ownDescription = documentData["ownDescription"] as? String
         else {
-          continue // Skip to the next iteration if any required field is missing
+          continue
         }
 
         let wgSearcher = WGSearcher(
@@ -103,37 +98,27 @@ final class SwipingScreenViewModel: ObservableObject {
           ownDescription: ownDescription
         )
 
-        localWGSearcher.append(wgSearcher)
+        self.wgSearcherArray.append(wgSearcher)
       }
 
-      // Return the WGSearcher array through the completion handler
-      completion(localWGSearcher, nil)
-    }
+      if let currentUserID = Auth.auth().currentUser?.uid {
+        self.database.collection("Swipes").document(currentUserID).getDocument { swipeSnapshot, swipeError in
+          guard let swipeSnapshot = swipeSnapshot, swipeError == nil else {
+            return
+          }
 
-    // Retrieve data from the "Swipes" collection based on the currentUser
-    if let currentUserID = Auth.auth().currentUser?.uid {
-      self.database.collection("Swipes").document(currentUserID).getDocument { swipeSnapshot, swipeError in
-        guard let swipeSnapshot = swipeSnapshot, swipeError == nil else {
-          completion(nil, swipeError)
-          return
-        }
+          let documentData = swipeSnapshot.data()
 
-        // Process data from "Swipes" collection
-        let documentData = swipeSnapshot.data()
+          if let disliked = documentData?["disliked"] as? [String],
+             let liked = documentData?["liked"] as? [String]
+          {
+            print("INITIAL: \(self.wgSearcherArray)")
+            print("DISLIKED: \(disliked)")
+            print("LIKED: \(liked)")
+            self.wgSearcherArray = self.wgSearcherArray.filter { !disliked.contains($0.id) && !liked.contains($0.id) }
+            print("FILTERED: \(self.wgSearcherArray)")
 
-        if let disliked = documentData?["disliked"] as? [String],
-           let liked = documentData?["liked"] as? [String]
-        {
-          // Filter out disliked and liked items
-          print("DISLIKED: \(disliked)")
-          print("LIKED: \(liked)")
-          localWGSearcher = localWGSearcher.filter { !disliked.contains($0.id) && !liked.contains($0.id) }
-          print("FILTERED: \(localWGSearcher)")
-
-          // Return the filtered WGOfferer array
-          completion(localWGSearcher, nil)
-        } else {
-          completion(nil, nil) // Handle case where "disliked" and "liked" arrays are not present
+          } else {}
         }
       }
     }

@@ -112,6 +112,7 @@ final class AuthenticationViewModel: ObservableObject {
     if let user = user {
       let docRef = database.collection("WGOfferer").document(user.uid)
       WGOfferer.shared.updateFirestoreWGOfferer(docRef: docRef)
+      createEmptySwipesEntryInFirebase(user: user)
     } else {
       hasError = true
       errorMessage = L10n.genericError
@@ -122,9 +123,22 @@ final class AuthenticationViewModel: ObservableObject {
     if let user = user {
       let docRef: DocumentReference = database.collection("WGSearcher").document(user.uid)
       WGSearcher.shared.updateFirestoreWGOfferer(docRef: docRef)
+      createEmptySwipesEntryInFirebase(user: user)
     } else {
       hasError = true
       errorMessage = L10n.genericError
+    }
+  }
+
+  private func createEmptySwipesEntryInFirebase(user: User?) {
+    let emptyData: [String: [String]] = [
+      "liked": [],
+      "disliked": [],
+      "likedBy": []
+    ]
+    if let user = user {
+      let docRef = database.collection("Swipes").document(user.uid)
+      docRef.setData(emptyData)
     }
   }
 }

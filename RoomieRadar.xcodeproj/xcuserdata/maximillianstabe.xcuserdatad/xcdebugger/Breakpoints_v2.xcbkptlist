@@ -20,5 +20,148 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "34E7B637-759F-4115-B8EF-F89B9253C25F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Swiping/SwipingScreen.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "45613A39-5FCC-4AEC-ADD3-4D447D4BE2AF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Swiping/SwipingScreenViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "getAllWGSearcher()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "45613A39-5FCC-4AEC-ADD3-4D447D4BE2AF - 39d7eec5018d55cb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in RoomieRadar.SwipingScreenViewModel.getAllWGSearcher() -&gt; ()"
+                  moduleName = "RoomieRadar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maximillianstabe/Desktop/Coding/Portfolio_Projects/RoomieRadar/Swiping/SwipingScreenViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "268">
+               </Location>
+               <Location
+                  uuid = "45613A39-5FCC-4AEC-ADD3-4D447D4BE2AF - 39d7eec5018d55cb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in RoomieRadar.SwipingScreenViewModel.getAllWGSearcher() -&gt; ()"
+                  moduleName = "RoomieRadar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maximillianstabe/Desktop/Coding/Portfolio_Projects/RoomieRadar/Swiping/SwipingScreenViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "292">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CF4EB977-6E4D-446A-B94B-FB9B4FCE9D1F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Swiping/SwipingScreenViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "getAllWGSearcher()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CF4EB977-6E4D-446A-B94B-FB9B4FCE9D1F - 27450c24302194af"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in RoomieRadar.SwipingScreenViewModel.getAllWGSearcher() -&gt; ()"
+                  moduleName = "RoomieRadar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maximillianstabe/Desktop/Coding/Portfolio_Projects/RoomieRadar/Swiping/SwipingScreenViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "3676">
+               </Location>
+               <Location
+                  uuid = "CF4EB977-6E4D-446A-B94B-FB9B4FCE9D1F - 39d7eec5018d554f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in RoomieRadar.SwipingScreenViewModel.getAllWGSearcher() -&gt; ()"
+                  moduleName = "RoomieRadar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maximillianstabe/Desktop/Coding/Portfolio_Projects/RoomieRadar/Swiping/SwipingScreenViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "124">
+               </Location>
+               <Location
+                  uuid = "CF4EB977-6E4D-446A-B94B-FB9B4FCE9D1F - 39d7eec5018d554f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in RoomieRadar.SwipingScreenViewModel.getAllWGSearcher() -&gt; ()"
+                  moduleName = "RoomieRadar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maximillianstabe/Desktop/Coding/Portfolio_Projects/RoomieRadar/Swiping/SwipingScreenViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "116">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5396715C-5822-472F-BB42-72E6B480C9DF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Swiping/SwipingScreenViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "getAllWGSearcher()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
