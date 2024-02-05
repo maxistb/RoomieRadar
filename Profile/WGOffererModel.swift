@@ -8,14 +8,14 @@ import FirebaseFirestore
 import Foundation
 import SwiftUI
 
-struct WGOfferer: Hashable {
+struct WGOfferer: Hashable, WGListEntry {
   var address: String
   var contactInfo: String
   var id: String
   var idealRoommate: String
   var imageString: String
   var name: String
-  var wgDescription: String
+  var ownDescription: String
   var wgPrice: String
   var wgSize: String
 
@@ -26,7 +26,7 @@ struct WGOfferer: Hashable {
     idealRoommate: "",
     imageString: "",
     name: "",
-    wgDescription: "",
+    ownDescription: "",
     wgPrice: "",
     wgSize: ""
   )
@@ -38,7 +38,7 @@ struct WGOfferer: Hashable {
       "idealRoommate": WGOfferer.shared.idealRoommate,
       "imageString": WGOfferer.shared.imageString,
       "name": WGOfferer.shared.name,
-      "wgDescription": WGOfferer.shared.wgDescription,
+      "wgDescription": WGOfferer.shared.ownDescription,
       "wgPrice": WGOfferer.shared.wgPrice,
       "wgSize": WGOfferer.shared.wgSize
     ]
@@ -58,7 +58,7 @@ struct WGOfferer: Hashable {
         WGOfferer.shared.idealRoommate = data?["idealRoommate"] ?? "Error"
         WGOfferer.shared.imageString = data?["imageString"] ?? "Error"
         WGOfferer.shared.name = data?["name"] ?? "Error"
-        WGOfferer.shared.wgDescription = data?["wgDescription"] ?? "Error"
+        WGOfferer.shared.ownDescription = data?["wgDescription"] ?? "Error"
         WGOfferer.shared.wgPrice = data?["wgPrice"] ?? "Error"
         WGOfferer.shared.wgSize = data?["wgSize"] ?? "Error"
         WGOfferer.shared.id = user.uid
@@ -74,7 +74,7 @@ struct WGOfferer: Hashable {
       idealRoommate: "Friendly and tidy",
       imageString: "https://picsum.photos/400/225?random=1",
       name: "John Doe",
-      wgDescription: "Spacious apartment with a great view",
+      ownDescription: "Spacious apartment with a great view",
       wgPrice: "$1200/month",
       wgSize: "3 bedrooms"
     )
@@ -86,7 +86,7 @@ struct WGOfferer: Hashable {
       idealRoommate: "Quiet and respectful",
       imageString: "https://picsum.photos/400/225?random=2",
       name: "Jane Smith",
-      wgDescription: "Cozy studio with modern amenities",
+      ownDescription: "Cozy studio with modern amenities",
       wgPrice: "$800/month",
       wgSize: "1 bedroom"
     )
@@ -98,7 +98,7 @@ struct WGOfferer: Hashable {
       idealRoommate: "Loves pets and enjoys cooking",
       imageString: "https://picsum.photos/400/225?random=3",
       name: "Bob Jenkins",
-      wgDescription: "Townhouse with a backyard",
+      ownDescription: "Townhouse with a backyard",
       wgPrice: "$1500/month",
       wgSize: "2 bedrooms"
     )
@@ -110,7 +110,7 @@ struct WGOfferer: Hashable {
       idealRoommate: "Artistic and laid-back",
       imageString: "https://picsum.photos/400/225?random=4",
       name: "Susan White",
-      wgDescription: "Loft-style apartment with exposed brick",
+      ownDescription: "Loft-style apartment with exposed brick",
       wgPrice: "$1800/month",
       wgSize: "4 bedrooms"
     )
@@ -122,7 +122,7 @@ struct WGOfferer: Hashable {
       idealRoommate: "Sports enthusiast and social",
       imageString: "https://picsum.photos/400/225?random=5",
       name: "Michael Green",
-      wgDescription: "High-rise living with gym and pool",
+      ownDescription: "High-rise living with gym and pool",
       wgPrice: "$2000/month",
       wgSize: "2 bedrooms"
     )
@@ -138,7 +138,7 @@ struct WGOfferer: Hashable {
         "idealRoommate": mockUser.idealRoommate,
         "imageString": mockUser.imageString,
         "name": mockUser.name,
-        "wgDescription": mockUser.wgDescription,
+        "wgDescription": mockUser.ownDescription,
         "wgPrice": mockUser.wgPrice,
         "wgSize": mockUser.wgSize
       ]

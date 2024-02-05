@@ -51,7 +51,7 @@ struct WGOffererCardContent: View {
         .bold()
 
       HStack {
-        Text(wgOfferer.wgDescription)
+        Text(wgOfferer.ownDescription)
           .foregroundStyle(.white)
           .font(.subheadline)
           .lineLimit(3)
@@ -122,7 +122,7 @@ struct WGOffererCardContent: View {
         Text("Beschreibung")
           .font(.title3)
           .bold()
-        Text(wgOfferer.wgDescription)
+        Text(wgOfferer.ownDescription)
         Divider()
         Text("Kontakt")
           .font(.title3)

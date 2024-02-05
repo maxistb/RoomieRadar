@@ -6,13 +6,13 @@
 import NukeUI
 import SwiftUI
 
-struct MatchesListWGOffererEntry: View {
+struct MatchesListEntry<T: WGListEntry>: View {
   @Environment(\.colorScheme) var colorScheme
-  let wgOfferer: WGOfferer
+  let entry: T
 
   var body: some View {
     HStack {
-      LazyImage(url: URL(string: wgOfferer.imageString)) { state in
+      LazyImage(url: URL(string: entry.imageString)) { state in
         if let image = state.image {
           image
             .resizable()
@@ -23,10 +23,10 @@ struct MatchesListWGOffererEntry: View {
       .padding(.horizontal, 10)
 
       VStack {
-        Text(wgOfferer.name)
+        Text(entry.name)
           .bold()
         VStack(alignment: .leading) {
-          Text(wgOfferer.wgDescription)
+          Text(entry.ownDescription)
             .foregroundStyle(.gray)
             .multilineTextAlignment(.leading)
             .lineLimit(2)
@@ -40,4 +40,10 @@ struct MatchesListWGOffererEntry: View {
     .foregroundStyle(colorScheme == .light ? .black : .white)
     .padding(12)
   }
+}
+
+protocol WGListEntry {
+  var imageString: String { get }
+  var name: String { get }
+  var ownDescription: String { get }
 }

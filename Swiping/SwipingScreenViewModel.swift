@@ -49,7 +49,7 @@ final class SwipingScreenViewModel: ObservableObject {
           idealRoommate: idealRoommate,
           imageString: imageString,
           name: name,
-          wgDescription: wgDescription,
+          ownDescription: wgDescription,
           wgPrice: wgPrice,
           wgSize: wgSize
         )

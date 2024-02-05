@@ -24,15 +24,14 @@ struct MatchesScreen: View {
         if isWGOffererState {
           ForEach(viewModel.wgSearcherMatches, id: \.id) { wgSearcher in
             NavigationLink(value: MatchesNavigation.wgSearcherDetail(wgSearcher)) {
-              MatchesListWGSearcherEntry(wgSearcher: wgSearcher)
+              MatchesListEntry(entry: wgSearcher)
             }
-
             Divider()
           }
         } else {
           ForEach(viewModel.wgOffererMatches, id: \.id) { wgOfferer in
             NavigationLink(value: MatchesNavigation.wgOffererDetail(wgOfferer)) {
-              MatchesListWGOffererEntry(wgOfferer: wgOfferer)
+              MatchesListEntry(entry: wgOfferer)
             }
             Divider()
           }

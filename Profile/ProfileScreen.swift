@@ -186,8 +186,8 @@ struct ProfileScreen: View {
         sectionHeader: "Beschreibung",
         placeholder: "Wie beschreibt ihr eure WG?",
         binding: Binding(
-          get: { WGOfferer.shared.wgDescription },
-          set: { newValue in WGOfferer.shared.wgDescription = newValue }
+          get: { WGOfferer.shared.ownDescription },
+          set: { newValue in WGOfferer.shared.ownDescription = newValue }
         )
       )
 

@@ -7,7 +7,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import Foundation
 
-public struct WGSearcher: Hashable {
+public struct WGSearcher: Hashable, WGListEntry {
   var age: String
   var contactInfo: String
   var gender: String
