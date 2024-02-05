@@ -9,18 +9,24 @@ import FirebaseFirestore
 import Foundation
 import Styleguide
 
+@MainActor
 final class SwipingScreenViewModel: ObservableObject {
+  enum ViewState {
+    case loading
+    case success
+    case error
+  }
+
   @Published var wgOffererArray: [WGOfferer] = []
   @Published var wgSearcherArray: [WGSearcher] = []
+  @Published var viewState: ViewState = .loading
   private let database = Firestore.firestore()
 
-  func getAllWGOfferer() {
-    self.database.collection("WGOfferer").getDocuments { wgSnapshot, wgError in
-      guard let wgSnapshot = wgSnapshot, wgError == nil else {
-        return
-      }
+  func getAllWGOfferer() async throws {
+    do {
+      let querySnapshot = try await self.database.collection("WGOfferer").getDocuments()
 
-      for documentSnapshot in wgSnapshot.documents {
+      for documentSnapshot in querySnapshot.documents {
         let documentData = documentSnapshot.data()
 
         guard let address = documentData["address"] as? String,
@@ -32,7 +38,8 @@ final class SwipingScreenViewModel: ObservableObject {
               let wgPrice = documentData["wgPrice"] as? String,
               let wgSize = documentData["wgSize"] as? String
         else {
-          continue
+          self.viewState = .error
+          return
         }
 
         let wgOfferer = WGOfferer(
@@ -51,29 +58,29 @@ final class SwipingScreenViewModel: ObservableObject {
       }
 
       if let currentUserID = Auth.auth().currentUser?.uid {
-        self.database.collection("Swipes").document(currentUserID).getDocument { swipeSnapshot, swipeError in
-          guard let swipeSnapshot = swipeSnapshot, swipeError == nil else {
-            return
-          }
-          let documentData = swipeSnapshot.data()
+        let document = try await self.database.collection("Swipes").document(currentUserID).getDocument()
+        let documentData = document.data()
 
-          if let disliked = documentData?["disliked"] as? [String],
-             let liked = documentData?["liked"] as? [String]
-          {
-            self.wgOffererArray = self.wgOffererArray.filter { !disliked.contains($0.id) && !liked.contains($0.id) }
-          } else {}
+        if let disliked = documentData?["disliked"] as? [String],
+           let liked = documentData?["liked"] as? [String]
+        {
+          self.wgOffererArray = self.wgOffererArray.filter { !disliked.contains($0.id) && !liked.contains($0.id) }
+          self.viewState = .success
+        } else {
+          self.viewState = .error
         }
       }
+    } catch {
+      self.viewState = .error
+      return
     }
   }
 
-  func getAllWGSearcher() {
-    self.database.collection("WGSearcher").getDocuments { wgSnapshot, wgError in
-      guard let wgSnapshot = wgSnapshot, wgError == nil else {
-        return
-      }
+  func getAllWGSearcher() async throws {
+    do {
+      let querySnapshot = try await self.database.collection("WGSearcher").getDocuments()
 
-      for documentSnapshot in wgSnapshot.documents {
+      for documentSnapshot in querySnapshot.documents {
         let documentData = documentSnapshot.data()
 
         guard let age = documentData["age"] as? String,
@@ -84,7 +91,8 @@ final class SwipingScreenViewModel: ObservableObject {
               let name = documentData["name"] as? String,
               let ownDescription = documentData["ownDescription"] as? String
         else {
-          continue
+          self.viewState = .error
+          return
         }
 
         let wgSearcher = WGSearcher(
@@ -102,25 +110,23 @@ final class SwipingScreenViewModel: ObservableObject {
       }
 
       if let currentUserID = Auth.auth().currentUser?.uid {
-        self.database.collection("Swipes").document(currentUserID).getDocument { swipeSnapshot, swipeError in
-          guard let swipeSnapshot = swipeSnapshot, swipeError == nil else {
-            return
-          }
+        let document = try await self.database.collection("Swipes").document(currentUserID).getDocument()
 
-          let documentData = swipeSnapshot.data()
+        let documentData = document.data()
 
-          if let disliked = documentData?["disliked"] as? [String],
-             let liked = documentData?["liked"] as? [String]
-          {
-            print("INITIAL: \(self.wgSearcherArray)")
-            print("DISLIKED: \(disliked)")
-            print("LIKED: \(liked)")
-            self.wgSearcherArray = self.wgSearcherArray.filter { !disliked.contains($0.id) && !liked.contains($0.id) }
-            print("FILTERED: \(self.wgSearcherArray)")
+        if let disliked = documentData?["disliked"] as? [String],
+           let liked = documentData?["liked"] as? [String]
+        {
+          self.wgSearcherArray = self.wgSearcherArray.filter { !disliked.contains($0.id) && !liked.contains($0.id) }
+          self.viewState = .success
 
-          } else {}
+        } else {
+          self.viewState = .error
         }
       }
+    } catch {
+      self.viewState = .error
+      return
     }
   }
 }

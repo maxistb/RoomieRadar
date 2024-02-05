@@ -7,7 +7,31 @@ import FirebaseAuth
 import Styleguide
 import SwiftUI
 
+enum TabSelection {
+  case matches
+  case swiping
+  case profile
+}
+
+enum MatchesNavigation: Hashable {
+  case wgOffererDetail(WGOfferer)
+  case wgSearcherDetail(WGSearcher)
+}
+
+enum ProfileNavigation: Hashable {
+  case profileScreen
+}
+
+enum SwipingNavigation: Hashable {
+  case swipingScreen
+}
+
 struct BottomTabbar: View {
+  @State private var selectedTab: TabSelection = .matches
+  @State private var matchesNavigationStack: [MatchesNavigation] = []
+  @State private var profileNavigationStack: [ProfileNavigation] = []
+  @State private var swipingNavigationStack: [SwipingNavigation] = []
+
   let user: User
   let isWGOffererState: Bool
   let profileScreenViewModel: ProfileScreenViewModel
@@ -19,29 +43,46 @@ struct BottomTabbar: View {
   }
 
   var body: some View {
-    TabView {
-      EmptyScreen()
+    TabView(selection: tabSelection()) {
+      MatchesScreen(isWGOffererState: isWGOffererState, path: $matchesNavigationStack)
+        .tag(TabSelection.matches)
         .tabItem {
           Image(systemName: "bubble.left")
           Text("Matches")
         }
-        .toolbarBackground(.visible, for: .tabBar)
 
-      SwipingScreen(isWGOffererState: isWGOffererState)
+      SwipingScreen(isWGOffererState: isWGOffererState, path: $swipingNavigationStack)
         .tabItem {
           Image(systemName: "arrow.left.arrow.right")
           Text("Swiping")
         }
-        .toolbarBackground(.visible, for: .tabBar)
+        .tag(TabSelection.swiping)
 
-      ProfileScreen(viewModel: profileScreenViewModel)
+      ProfileScreen(viewModel: profileScreenViewModel, path: $profileNavigationStack)
         .tabItem {
           Image(systemName: "person.crop.circle")
           Text("Profil")
         }
-        .toolbarBackground(.visible, for: .tabBar)
+        .tag(TabSelection.profile)
     }
     .tint(Asset.Color.beatzColor.swiftUIColor)
     .navigationBarBackButtonHidden()
+  }
+}
+
+extension BottomTabbar {
+  private func tabSelection() -> Binding<TabSelection> {
+    Binding {
+      self.selectedTab
+    } set: { tappedTab in
+
+      if tappedTab == self.selectedTab {
+        if matchesNavigationStack.isEmpty {
+        } else {
+          matchesNavigationStack = []
+        }
+      }
+      self.selectedTab = tappedTab
+    }
   }
 }

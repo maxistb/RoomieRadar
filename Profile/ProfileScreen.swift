@@ -11,14 +11,11 @@ import SwiftUI
 import UIComponents
 
 struct ProfileScreen: View {
-  @ObservedObject private var viewModel: ProfileScreenViewModel
-
-  init(viewModel: ProfileScreenViewModel) {
-    self.viewModel = viewModel
-  }
+  @ObservedObject var viewModel: ProfileScreenViewModel
+  var path: Binding<[ProfileNavigation]>
 
   var body: some View {
-    NavigationView {
+    NavigationStack(path: path) {
       List {
         profileImage
         if viewModel.isWGOffererState {

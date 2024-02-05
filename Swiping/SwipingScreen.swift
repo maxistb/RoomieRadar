@@ -11,8 +11,38 @@ struct SwipingScreen: View {
 
   // is true if the current user is wgofferer
   let isWGOffererState: Bool
+  var path: Binding<[SwipingNavigation]>
+
+  init(isWGOffererState: Bool, path: Binding<[SwipingNavigation]>) {
+    self.isWGOffererState = isWGOffererState
+    self.path = path
+  }
 
   var body: some View {
+    NavigationStack(path: path) {
+      switch viewModel.viewState {
+      case .loading:
+        loadingView
+      case .success:
+        normalView
+      case .error:
+        errorView
+      }
+    }
+  }
+
+  private var loadingView: some View {
+    ProgressView()
+      .task {
+        if !isWGOffererState {
+          try? await viewModel.getAllWGOfferer()
+        } else {
+          try? await viewModel.getAllWGSearcher()
+        }
+      }
+  }
+
+  private var normalView: some View {
     VStack {
       ZStack {
         if !isWGOffererState {
@@ -26,12 +56,9 @@ struct SwipingScreen: View {
         }
       }
     }
-    .onAppear {
-      if !isWGOffererState {
-        viewModel.getAllWGOfferer()
-      } else {
-        viewModel.getAllWGSearcher()
-      }
-    }
+  }
+
+  private var errorView: some View {
+    Text("ERROR")
   }
 }
