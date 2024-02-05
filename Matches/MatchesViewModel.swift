@@ -2,6 +2,7 @@
 // Created by Maximillian Stabe on 20.01.24.
 // Copyright © 2024 Maximillian Joel Stabe. All rights reserved.
 //
+// swiftlint: disable function_body_length
 
 import FirebaseAuth
 import FirebaseFirestore
@@ -195,3 +196,5 @@ class MatchesViewModel: ObservableObject {
     }
   }
 }
+
+// swiftlint: enable function_body_length

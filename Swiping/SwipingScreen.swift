@@ -29,15 +29,22 @@ struct SwipingScreen: View {
         errorView
       }
     }
+    .onChange(of: viewModel.viewState) { newValue in
+      print("NEWVALUE: \(newValue)")
+    }
   }
 
   private var loadingView: some View {
     ProgressView()
       .task {
-        if !isWGOffererState {
-          try? await viewModel.getAllWGOfferer()
-        } else {
-          try? await viewModel.getAllWGSearcher()
+        do {
+          if !isWGOffererState {
+            try await viewModel.getAllWGOfferer()
+          } else {
+            try await viewModel.getAllWGSearcher()
+          }
+        } catch {
+          viewModel.viewState = .error
         }
       }
   }
@@ -59,6 +66,18 @@ struct SwipingScreen: View {
   }
 
   private var errorView: some View {
-    Text("ERROR")
+    VStack {
+      Text("Ein Fehler ist aufgetreten.")
+
+      Button("Erneut laden") {
+        Task {
+          if !isWGOffererState {
+            try? await viewModel.getAllWGOfferer()
+          } else {
+            try? await viewModel.getAllWGSearcher()
+          }
+        }
+      }
+    }
   }
 }

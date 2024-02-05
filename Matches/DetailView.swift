@@ -16,7 +16,7 @@ struct ChildView: View {
 
         Text(person.name)
       }
-      .navigationTitle("Child")
+      .navigationTitle("Chat")
     }
   }
 }

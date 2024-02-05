@@ -7,6 +7,7 @@ import NukeUI
 import SwiftUI
 
 struct MatchesListWGOffererEntry: View {
+  @Environment(\.colorScheme) var colorScheme
   let wgOfferer: WGOfferer
 
   var body: some View {
@@ -23,14 +24,20 @@ struct MatchesListWGOffererEntry: View {
 
       VStack {
         Text(wgOfferer.name)
-        Text(wgOfferer.wgDescription)
-          .lineLimit(2)
+          .bold()
+        VStack(alignment: .leading) {
+          Text(wgOfferer.wgDescription)
+            .foregroundStyle(.gray)
+            .multilineTextAlignment(.leading)
+            .lineLimit(2)
+        }
       }
 
       Spacer()
 
       Image(systemName: "arrow.right")
     }
+    .foregroundStyle(colorScheme == .light ? .black : .white)
     .padding(12)
   }
 }

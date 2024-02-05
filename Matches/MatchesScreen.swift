@@ -38,6 +38,7 @@ struct MatchesScreen: View {
           }
         }
       }
+      .navigationTitle("Matches")
       .navigationDestination(for: MatchesNavigation.self) { screen in
         switch screen {
         case let .wgOffererDetail(wgOfferer): ChildView(person: wgOfferer, path: path)

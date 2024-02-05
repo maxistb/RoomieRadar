@@ -21,11 +21,11 @@ final class SwipingScreenViewModel: ObservableObject {
   @Published var wgSearcherArray: [WGSearcher] = []
   @Published var viewState: ViewState = .loading
   private let database = Firestore.firestore()
+  private let currentUserID = Auth.auth().currentUser?.uid
 
   func getAllWGOfferer() async throws {
     do {
       let querySnapshot = try await self.database.collection("WGOfferer").getDocuments()
-
       for documentSnapshot in querySnapshot.documents {
         let documentData = documentSnapshot.data()
 
@@ -57,7 +57,7 @@ final class SwipingScreenViewModel: ObservableObject {
         self.wgOffererArray.append(wgOfferer)
       }
 
-      if let currentUserID = Auth.auth().currentUser?.uid {
+      if let currentUserID = currentUserID {
         let document = try await self.database.collection("Swipes").document(currentUserID).getDocument()
         let documentData = document.data()
 
@@ -68,6 +68,7 @@ final class SwipingScreenViewModel: ObservableObject {
           self.viewState = .success
         } else {
           self.viewState = .error
+          return
         }
       }
     } catch {
@@ -109,7 +110,7 @@ final class SwipingScreenViewModel: ObservableObject {
         self.wgSearcherArray.append(wgSearcher)
       }
 
-      if let currentUserID = Auth.auth().currentUser?.uid {
+      if let currentUserID = currentUserID {
         let document = try await self.database.collection("Swipes").document(currentUserID).getDocument()
 
         let documentData = document.data()
@@ -122,6 +123,7 @@ final class SwipingScreenViewModel: ObservableObject {
 
         } else {
           self.viewState = .error
+          return
         }
       }
     } catch {
