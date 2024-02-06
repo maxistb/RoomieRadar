@@ -5,8 +5,8 @@
 
 import SwiftUI
 
-struct ChildView: View {
-  let person: WGOfferer
+struct ChatView: View {
+  let wgOfferer: WGOfferer
   var path: Binding<[MatchesNavigation]>
 
   var body: some View {
@@ -14,7 +14,7 @@ struct ChildView: View {
       VStack {
         Text("Child View")
 
-        Text(person.name)
+        Text(wgOfferer.name)
       }
       .navigationTitle("Chat")
     }

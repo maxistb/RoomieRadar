@@ -6,6 +6,12 @@
 import NukeUI
 import SwiftUI
 
+protocol WGListEntry: Equatable, Hashable {
+  var imageString: String { get }
+  var name: String { get }
+  var ownDescription: String { get }
+}
+
 struct MatchesListEntry<T: WGListEntry>: View {
   @Environment(\.colorScheme) var colorScheme
   let entry: T
@@ -40,10 +46,4 @@ struct MatchesListEntry<T: WGListEntry>: View {
     .foregroundStyle(colorScheme == .light ? .black : .white)
     .padding(12)
   }
-}
-
-protocol WGListEntry {
-  var imageString: String { get }
-  var name: String { get }
-  var ownDescription: String { get }
 }
