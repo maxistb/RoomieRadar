@@ -19,7 +19,7 @@ final class SwipingScreenViewModel: ObservableObject {
 
   @Published var wgOffererArray: [WGOfferer] = []
   @Published var wgSearcherArray: [WGSearcher] = []
-  @Published var viewState: ViewState = .loading
+  @Published var viewState: ViewState = .error
   private let database = Firestore.firestore()
   private let currentUserID = Auth.auth().currentUser?.uid
 

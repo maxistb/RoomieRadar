@@ -23,27 +23,17 @@ struct MatchesScreen: View {
       ScrollView {
         if isWGOffererState {
           ForEach(viewModel.wgSearcherMatches, id: \.id) { wgSearcher in
-            NavigationLink(value: MatchesNavigation.wgSearcherDetail(wgSearcher)) {
-              MatchesListEntry(entry: wgSearcher)
-            }
+            MatchesListEntry(entry: wgSearcher)
             Divider()
           }
         } else {
           ForEach(viewModel.wgOffererMatches, id: \.id) { wgOfferer in
-            NavigationLink(value: MatchesNavigation.wgOffererDetail(wgOfferer)) {
-              MatchesListEntry(entry: wgOfferer)
-            }
+            MatchesListEntry(entry: wgOfferer)
             Divider()
           }
         }
       }
       .navigationTitle("Matches")
-      .navigationDestination(for: MatchesNavigation.self) { screen in
-        switch screen {
-        case let .wgOffererDetail(wgOfferer): ChatView(wgOfferer: wgOfferer, path: path)
-        case let .wgSearcherDetail(wgSearcher): Text("CHILDVIEW")
-        }
-      }
     }
   }
 }

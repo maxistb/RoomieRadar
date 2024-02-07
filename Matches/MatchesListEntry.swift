@@ -10,10 +10,12 @@ protocol WGListEntry: Equatable, Hashable {
   var imageString: String { get }
   var name: String { get }
   var ownDescription: String { get }
+  var contactInfo: String { get }
 }
 
 struct MatchesListEntry<T: WGListEntry>: View {
   @Environment(\.colorScheme) var colorScheme
+  @State private var showContactInfo = false
   let entry: T
 
   var body: some View {
@@ -45,5 +47,9 @@ struct MatchesListEntry<T: WGListEntry>: View {
     }
     .foregroundStyle(colorScheme == .light ? .black : .white)
     .padding(12)
+    .onTapGesture {
+      showContactInfo = true
+    }
+    .alert("\(entry.name) ist zu erreichen unter \(entry.contactInfo)", isPresented: $showContactInfo, actions: {})
   }
 }
