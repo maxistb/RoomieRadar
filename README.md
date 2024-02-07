@@ -5,10 +5,10 @@ The RoomieRadar App is a Tinder-Like App for Apartment-Searching.
 ## Overview
 
 <div style="display: flex; flex-direction: row;">
-  <img src="https://github.com/maxistb/Beatz-Fitness/assets/127623368/8f54367a-921d-4c11-8e0f-9874b92779b2" width="200" height="440">
-  <img src="https://github.com/maxistb/Beatz-Fitness/assets/127623368/a1f08eec-c927-40b6-b4e8-9b3afa77bb24" width="200" height="440">
-  <img src="https://github.com/maxistb/Beatz-Fitness/assets/127623368/342de8a2-eaa8-426f-9603-ebe5e24f4edf" width="200" height="440">
-  <img src="https://github.com/maxistb/Beatz-Fitness/assets/127623368/df49f8e5-b929-4d2f-83c6-93755dee1958" width="200" height="440">
+  <img src="https://github.com/maxistb/RoomieRadar/assets/127623368/93507b86-ddd7-4d1d-a523-8434a14a9da5" width="200" height="440">
+  <img src="https://github.com/maxistb/RoomieRadar/assets/127623368/86fa1a16-b57d-49d4-b554-e466cdda27d2" width="200" height="440">
+  <img src="https://github.com/maxistb/RoomieRadar/assets/127623368/0f1c1c01-a557-483c-98fc-6dfe26827dd0" width="200" height="440">
+  <img src="https://github.com/maxistb/RoomieRadar/assets/127623368/c086c377-b0c3-4bc0-a545-9f87ab0f1ac4" width="200" height="440">
 </div>
 
 ## Project Structure
